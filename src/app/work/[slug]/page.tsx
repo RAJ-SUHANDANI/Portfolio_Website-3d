@@ -6,6 +6,7 @@ import type {Metadata} from 'next';
 import {projects,profile} from '@/lib/data';
 import {projectStories} from '@/lib/projectStories';
 import ProjectDevice from '@/components/ProjectDevice';
+import ProjectScrollMotion from '@/components/ProjectScrollMotion';
 
 export const dynamicParams=false;
 
@@ -29,6 +30,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
  const more=[1,2].map(offset=>projects[(index+offset)%projects.length]);
 
  return <main className="project-case" style={{'--case-accent':project.color} as CSSProperties}>
+  <ProjectScrollMotion/>
   <header className="pc-header">
    <Link href="/" className="pc-logo" aria-label="Back to Raj's portfolio">R<span>.</span>S✳</Link>
    <span className="pc-header-middle">THE WORK / CASE STUDIES <span>© 2026</span></span>

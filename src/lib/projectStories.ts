@@ -138,21 +138,23 @@ export const projectStories:Record<string,ProjectStory>={
     ],previewType:"repository",previewNote:"Interface screenshot and architecture diagram sourced from the StudyNotion GitHub repository."
   },
   auditai:{
-    slug:"auditai",number:"07",tagline:"Exploring smarter developer tools.",statement:"MAKE CODE REVIEW EASIER TO UNDERSTAND.",scope:"Developer tool experiment",discipline:"Next.js and AI exploration",
-    intro:"AuditAI is a code review interface experiment in the GitHub portfolio. Its intended focus is to bring software analysis into a clearer developer experience.",
-    problem:"Code analysis can produce information that is difficult to prioritize without clear categories, context and an organized presentation.",
-    solution:"The repository explores a Next.js and TypeScript starting point for a code review workflow. Its current README is a default framework starter, so further feature details and a live deployment cannot yet be independently verified.",
+    slug:"auditai",number:"07",tagline:"Better interfaces through better feedback.",statement:"TURN SCREENSHOTS INTO ACTIONABLE DESIGN INSIGHTS.",scope:"AI interface analysis platform",discipline:"UX auditing and accessibility",
+    intro:"AuditAI is a live interface analysis platform. Upload a screenshot of a website to evaluate visual hierarchy, accessibility, typography and conversion signals, then explore issues and recommendations in a visual report.",
+    problem:"Finding usability problems in an interface takes a careful eye and structured evaluation. Designers and developers need specific, actionable feedback rather than vague assessments.",
+    solution:"AuditAI combines a guided screenshot upload with Gemini powered analysis. It returns structured ratings for layout and accessibility, identifies issues with location markers, and organizes improvement recommendations for the interface.",
     deepDive:[
-      {number:"01",title:"Developer experience",description:"The project explores the presentation of code review information in a developer focused interface."},
-      {number:"02",title:"Modern application stack",description:"The portfolio documents an intended Next.js and TypeScript based implementation."},
-      {number:"03",title:"AI integration direction",description:"The project scope includes Gemini related tooling, but exact working capabilities are not documented in its README."},
-      {number:"04",title:"Open source access",description:"The GitHub repository is available to inspect the actual implementation and its progress."}
+      {number:"01",title:"Upload an interface",description:"Provide a screenshot of a website or choose an example layout to start an audit."},
+      {number:"02",title:"Analyze key signals",description:"The app assesses user experience, visual hierarchy, typography, contrast, accessibility and conversion related choices."},
+      {number:"03",title:"Locate the issues",description:"The report describes problems and plots their locations over the submitted layout using percentage based annotations."},
+      {number:"04",title:"Prioritize improvements",description:"The analysis provides structured recommendations, with impact and effort classifications, to guide next design iterations."}
     ],
     decisions:[
-      {title:"Show verified progress",description:"The case study distinguishes intended features from confirmed functionality."},
-      {title:"Source first",description:"A GitHub action replaces the unavailable live demo so no nonworking deployment is advertised."},
-      {title:"Room to evolve",description:"The project page can expand as implementation and documentation become available."}
+      {title:"Screenshot first workflow",description:"Users can provide a visual capture to evaluate without requiring access to a website's source code."},
+      {title:"Structured analysis",description:"The audit uses a typed JSON response schema for ratings, issue details and recommendations."},
+      {title:"Actionable presentation",description:"Annotations and grouped scores make it easier to connect suggestions to parts of the original interface."}
     ],
-    screenshots:[],previewType:"illustration",previewNote:"This is an illustrative developer interface. No live AuditAI deployment is documented."
+    screenshots:[{src:"/project-previews/auditai-home.png",alt:"Screenshot of AuditAI live landing page at audit-ai-nine-beta.vercel.app",label:"The live website"}],
+    previewType:"repository",previewNote:"Actual live AuditAI homepage captured from the deployed website."
+
   }
 };

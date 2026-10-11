@@ -96,10 +96,11 @@ export const projects: Project[] = [
     slug: "auditai",
     name: "AuditAI",
     category: "AI / DEVELOPER TOOLS",
-    summary: "AuditAI is a development project exploring how AI assisted code review can be presented in a clear interface.",
-    approach: "The repository currently contains a default Next.js README and does not document a public deployment. Visit GitHub to inspect the source and follow the project's progress.",
+    summary: "AuditAI analyzes website screenshots to highlight user experience, accessibility, visual hierarchy and conversion issues with AI guided recommendations.",
+    approach: "The live AuditAI app lets users upload website screenshots and receive structured interface audits, scores, annotated issues and actionable design recommendations using Gemini.",
     stack: ["Next.js", "TypeScript", "Supabase", "Gemini API"],
     github: "https://github.com/RAJ-SUHANDANI/AuditAI",
+    live: "https://audit-ai-nine-beta.vercel.app/",
     features: ["Next.js application structure", "Developer interface exploration", "React and TypeScript", "Source repository available"],
     color: "#F3D59A"
   }

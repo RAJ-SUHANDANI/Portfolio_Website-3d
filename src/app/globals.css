@@ -304,3 +304,24 @@
 @media(max-width:830px){.pc-title-wrap h1.pc-long-title{font-size:clamp(65px,12vw,105px)}}
 @media(max-width:540px){.pc-title-wrap h1.pc-long-title{font-size:clamp(58px,14vw,83px)}}
 @media(prefers-reduced-motion:reduce){.pc-title-wrap,.pc-hero-visual{animation:none}}
+
+/* Scroll storytelling: 3D depth with GPU friendly transforms and visible progression. */
+.project-case{perspective:1300px}
+.project-case .pc-hero-visual{transform-style:preserve-3d;will-change:transform}
+.project-case .pc-hero[data-inview="true"] .pc-hero-visual{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.35),0) rotateY(var(--scroll-tilt,0deg))}
+.project-case .pc-section-index{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.18),0)}
+.project-case .pc-overview h2{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.32),0) rotateY(calc(var(--scroll-tilt,0deg)*-.65));transform-origin:left center}
+.project-case .pc-narrative-grid article:first-child{transform:perspective(1000px) rotateY(calc(var(--scroll-tilt,0deg)*-.9)) translate3d(0,calc(var(--scroll-shift,0px)*-.25),0)}
+.project-case .pc-narrative-grid article:last-child{transform:perspective(1000px) rotateY(calc(var(--scroll-tilt,0deg)*.9)) translate3d(0,calc(var(--scroll-shift,0px)*.25),0)}
+.project-case .pc-media .pc-gallery-item:first-child{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.2),0) rotateX(calc(var(--scroll-tilt,0deg)*-.35));transform-origin:center top}
+.project-case .pc-stack h2{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.42),0)}
+.project-case .pc-explore h2{transform:translate3d(0,calc(var(--scroll-shift,0px)*-.3),0) rotateX(calc(var(--scroll-tilt,0deg)*.36))}
+.project-case .pc-decision-grid article{transform-style:preserve-3d}
+.project-case .pc-decision-grid article:hover{transform:perspective(1000px) rotateX(2deg) rotateY(-3deg) translateY(-8px)}
+.project-case .pc-more-grid a:hover{transform:perspective(1000px) rotateY(-4deg) translateY(-8px)}
+.project-case .pc-workings-item:hover{transform:translateZ(0)}
+.project-case .pc-info-bar{position:relative}
+@media(prefers-reduced-motion:reduce){
+.project-case .pc-hero-visual,.project-case .pc-section-index,.project-case .pc-overview h2,.project-case .pc-narrative-grid article,.project-case .pc-media .pc-gallery-item,.project-case .pc-stack h2,.project-case .pc-explore h2{transform:none!important;will-change:auto!important}
+.project-case .pc-decision-grid article:hover,.project-case .pc-more-grid a:hover{transform:none!important}
+}
