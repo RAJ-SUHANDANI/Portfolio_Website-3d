@@ -1,0 +1,157 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 1 /Kids [6 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 4134 >>
+stream
+BT
+/F2 17 Tf
+1 0 0 1 41 806 Tm
+(RAJ MANISH SUHANDANI) Tj
+/F1 8 Tf
+1 0 0 1 41 785 Tm
+(Bhavnagar, Gujarat | +91 9586402020 | rajsuhandani11@gmail.com) Tj
+/F1 8 Tf
+1 0 0 1 41 774 Tm
+(LinkedIn: linkedin.com/in/raj-suhandani-a4a393321 | GitHub: github.com/RAJ-SUHANDANI) Tj
+/F2 10 Tf
+1 0 0 1 41 756 Tm
+(PROFESSIONAL SUMMARY) Tj
+/F1 8.5 Tf
+1 0 0 1 41 740 Tm
+(ICT engineering student \(2027\) and full-stack developer building React, Next.js and TypeScript applications.) Tj
+/F1 8.5 Tf
+1 0 0 1 41 729 Tm
+(Experience with PostgreSQL, Prisma, Supabase, REST APIs, SaaS dashboards, Three.js and analytics.) Tj
+/F1 8.5 Tf
+1 0 0 1 41 718 Tm
+(Social media content planning and digital communication experience alongside software development.) Tj
+/F2 10 Tf
+1 0 0 1 41 702 Tm
+(TECHNICAL SKILLS) Tj
+/F1 8.5 Tf
+1 0 0 1 41 686 Tm
+(Languages: JavaScript \(ES6+\), TypeScript, Python, C++, C, SQL) Tj
+/F1 8.5 Tf
+1 0 0 1 41 675 Tm
+(Frontend: React.js, Next.js, HTML, CSS, Tailwind CSS, Redux Toolkit, Responsive Web Design) Tj
+/F1 8.5 Tf
+1 0 0 1 41 664 Tm
+(Backend & Data: Node.js, PostgreSQL, Prisma ORM, Supabase, REST APIs, Authentication) Tj
+/F1 8.5 Tf
+1 0 0 1 41 653 Tm
+(Creative UI: Three.js, React Three Fiber, GSAP, Framer Motion, Recharts) Tj
+/F1 8.5 Tf
+1 0 0 1 41 642 Tm
+(Tools & Foundations: Git, GitHub, Vercel, DSA, OOP, DBMS, Software Engineering) Tj
+/F1 8.5 Tf
+1 0 0 1 41 631 Tm
+(Marketing: Social Media Management, Content Planning, Copywriting, Brand Communication) Tj
+/F2 10 Tf
+1 0 0 1 41 615 Tm
+(PROFESSIONAL EXPERIENCE) Tj
+/F2 8.5 Tf
+1 0 0 1 41 599 Tm
+(Social Media Manager Intern | OCAVIOR | 2026 - Present \(start date to confirm\)) Tj
+/F1 8.5 Tf
+1 0 0 1 41 588 Tm
+(- Support creative ideation, social content planning, writing platform-specific copy and brand communication.) Tj
+/F1 8.5 Tf
+1 0 0 1 41 577 Tm
+(- Develop LinkedIn, Instagram and Facebook content concepts with an editorial and visual storytelling focus.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 566 Tm
+(React.js Development Intern | InfoLabz IT Services Pvt. Ltd. | July 3-17, 2026) Tj
+/F1 8.5 Tf
+1 0 0 1 41 555 Tm
+(- Completed JavaScript fundamentals, ES6, React and API integration during a two-week internship.) Tj
+/F1 8.5 Tf
+1 0 0 1 41 544 Tm
+(- Developed an API-based React application; completion certified by InfoLabz on July 18, 2026.) Tj
+/F2 10 Tf
+1 0 0 1 41 528 Tm
+(SELECTED PROJECTS) Tj
+/F2 8.5 Tf
+1 0 0 1 41 512 Tm
+(Savora | Next.js, TypeScript, PostgreSQL, Prisma) Tj
+/F1 8.1 Tf
+1 0 0 1 41 502 Tm
+(- Created restaurant booking workflows, dashboards, and database-enforced double-booking protection.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 490 Tm
+(Veyra | Next.js, React, Three.js, Recharts) Tj
+/F1 8.1 Tf
+1 0 0 1 41 480 Tm
+(- Built project management workspace with task boards, analytics, client portals and 3D visualization.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 468 Tm
+(VaultIQ | Next.js, TypeScript, Supabase, Three.js) Tj
+/F1 8.1 Tf
+1 0 0 1 41 458 Tm
+(- Developed finance dashboard for transaction management, budgets, goals and analytics.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 446 Tm
+(PulseFit | Next.js, Supabase, GSAP, Recharts) Tj
+/F1 8.1 Tf
+1 0 0 1 41 436 Tm
+(- Developed workout tracking, progress charts, habit streaks and training goals.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 424 Tm
+(GymSpot | React, TypeScript, Supabase, Vite) Tj
+/F1 8.1 Tf
+1 0 0 1 41 414 Tm
+(- Built searchable gym discovery, user authentication, owner dashboards and admin features.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 402 Tm
+(StudyNotion | React, Redux Toolkit, Three.js, GSAP) Tj
+/F1 8.1 Tf
+1 0 0 1 41 392 Tm
+(- Enhanced open-source course platform with responsive UI, enrollment and motion features.) Tj
+/F2 8.5 Tf
+1 0 0 1 41 380 Tm
+(AuditAI | Next.js, TypeScript, Supabase, Gemini API) Tj
+/F1 8.1 Tf
+1 0 0 1 41 370 Tm
+(- Built an exploratory AI-supported code-audit interface with modern web technologies.) Tj
+/F2 10 Tf
+1 0 0 1 41 353 Tm
+(EDUCATION) Tj
+/F2 8.5 Tf
+1 0 0 1 41 337 Tm
+(BE, Information & Communication Technology | Government Engineering College, Bhavnagar \(GTU\)) Tj
+/F1 8.5 Tf
+1 0 0 1 41 326 Tm
+(2023 - 2027 | CGPA 7.78/10) Tj
+/F1 8.5 Tf
+1 0 0 1 41 315 Tm
+(Silver Bells Public School | CBSE XII: 79.8% | CBSE X: 91.83%) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000185 00000 n 
+0000000260 00000 n 
+0000004445 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4581
+%%EOF
