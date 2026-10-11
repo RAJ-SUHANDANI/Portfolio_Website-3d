@@ -48,7 +48,7 @@ export default function ProjectDevice({project,story}:{project:Project;story:Pro
   <div className="project-device-actions">
    {project.live?<a className="project-live-action" href={project.live} target="_blank" rel="noopener noreferrer">VISIT PROJECT WEBSITE <span aria-hidden="true">↗</span></a>:
    <a className="project-live-action" href={project.github} target="_blank" rel="noopener noreferrer">EXPLORE SOURCE CODE <span aria-hidden="true">↗</span></a>}
-   <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-source-action">GITHUB ↗</a>
+   {project.slug!=='auditai'&&<a href={project.github} target="_blank" rel="noopener noreferrer" className="project-source-action">GITHUB ↗</a>}
   </div>
   <p className="project-preview-disclaimer">{story.previewNote}</p>
  </div>;

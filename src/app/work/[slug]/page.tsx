@@ -126,7 +126,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
    <p className="pc-explore-desc">{project.live?'Visit the application to explore the experience, or open GitHub to see how the code is organized.':'There is no documented live deployment for this project. Explore the repository to inspect the current implementation.'}</p>
    <div className="pc-explore-buttons">
     <a className="pc-primary-cta" href={project.live||project.github} target="_blank" rel="noopener noreferrer">{project.live?'VISIT THE PROJECT WEBSITE':'EXPLORE SOURCE ON GITHUB'} <ArrowUpRight size={25}/></a>
-    <a className="pc-secondary-cta" href={project.github} target="_blank" rel="noopener noreferrer"><Github size={21}/> GITHUB REPOSITORY <ArrowUpRight size={20}/></a>
+    {project.slug!=='auditai'&&<a className="pc-secondary-cta" href={project.github} target="_blank" rel="noopener noreferrer"><Github size={21}/> GITHUB REPOSITORY <ArrowUpRight size={20}/></a>}
    </div>
   </section>
 
