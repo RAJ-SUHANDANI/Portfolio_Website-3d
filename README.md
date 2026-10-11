@@ -26,3 +26,6 @@ WebGL laptop lazily imported on supported desktop environments, with mobile/redu
 
 ## Portfolio data
 `src/lib/data.ts` contains all project details and professional profile information. The resume PDF is also provided separately in this conversation for verification. 
+
+## Portfolio assets
+The About section shows a compressed WebP photograph at `public/raj-suhandani-portrait.webp` (user supplied). The downloadable ATS-oriented two-page resume is `public/Raj-Suhandani-Resume.pdf`, with a plain-text companion. Website and resume education data list CGPA 8.04/10.

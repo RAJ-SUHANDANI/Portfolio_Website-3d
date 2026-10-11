@@ -36,5 +36,5 @@ AuditAI | Next.js, TypeScript, Supabase, Gemini API
 - Built an exploratory AI-supported code-audit interface with modern web technologies.
 EDUCATION
 BE, Information & Communication Technology | Government Engineering College, Bhavnagar (GTU)
-2023 - 2027 | CGPA 7.78/10
+2023 - 2027 | CGPA 8.04/10
 Silver Bells Public School | CBSE XII: 79.8% | CBSE X: 91.83%
