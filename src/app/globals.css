@@ -18,3 +18,25 @@
 .case-links a{display:inline-flex;align-items:center;justify-content:center;min-height:50px;border-radius:3px;transition:transform .18s ease}
 .case-links a:hover{transform:translateY(-2px)}
 @media(prefers-reduced-motion:reduce){.case-links a{transition:none}.case-links a:hover{transform:none}}
+
+/* Original resume displayed without recreating its design */
+.resume-real-preview{display:block;position:relative;align-self:center;max-width:400px;aspect-ratio:210/297;overflow:hidden;background:#fff;box-shadow:22px 24px 0 #b8ceb6;transform:rotate(2deg);transition:transform .3s ease}
+.resume-real-preview:hover{transform:rotate(0deg) translateY(-6px)}
+.resume-real-preview img{width:100%;height:100%;object-fit:contain;display:block}
+.resume-real-preview span{position:absolute;bottom:0;left:0;right:0;background:#14181ce8;color:#fff;text-align:center;padding:15px;font:11px 'Space Mono',monospace}
+.resume-document-intro{color:#69726f;font-size:18px;max-width:600px;line-height:1.6}
+.resume-document-frame{background:#d7dbd8;border:1px solid #c5cec5;border-radius:12px;overflow:hidden;box-shadow:0 24px 55px #0002}
+.resume-document-frame iframe{display:block;border:0;width:100%;height:min(1120px,85vh);min-height:650px;background:#fff}
+.resume-document-fallback{color:#69726f;font-size:14px;line-height:1.6}
+.resume-document-fallback a{text-decoration:underline}
+.laptop-interaction-shell{position:relative;width:100%;height:100%}
+.laptop-interaction-zone{position:absolute;inset:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.laptop-interaction-zone:active{cursor:grabbing}
+.laptop-interaction-zone canvas{pointer-events:none}
+.laptop-reset{position:absolute;bottom:12%;left:9%;border:1px solid #9bbba58c;background:#1b2928b8;color:#e7efe6;font:10px 'Space Mono',monospace;letter-spacing:.04em;padding:11px 14px;border-radius:99px;z-index:4}
+.laptop-reset:hover{background:#34483c}
+@media(max-width:800px){.hero-model{top:34%;right:0;width:100%;height:52%}.laptop-reset{bottom:8%}.resume-real-preview{max-width:340px;margin:0 auto}.resume-document-frame iframe{min-height:560px;height:70vh}}
+@media(max-width:470px){.hero-model{top:40%;height:44%}.laptop-reset{bottom:3%;left:5%}.resume-document-frame iframe{min-height:460px}}
+@media(prefers-reduced-motion:reduce){.resume-real-preview{transition:none}.resume-real-preview:hover{transform:none}}
+
+.resume-real-preview iframe{display:block;width:100%;height:100%;border:0;pointer-events:none;background:#fff}
