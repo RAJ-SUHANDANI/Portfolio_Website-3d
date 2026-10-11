@@ -2,7 +2,7 @@ RAJ MANISH SUHANDANI
 Bhavnagar, Gujarat | +91 9586402020 | rajsuhandani11@gmail.com
 LinkedIn: linkedin.com/in/raj-suhandani-a4a393321 | GitHub: github.com/RAJ-SUHANDANI
 PROFESSIONAL SUMMARY
-ICT engineering student (2027) and full-stack developer building React, Next.js and TypeScript applications.
+ICT engineering student (2027) and full stack developer building React, Next.js and TypeScript applications.
 Experience with PostgreSQL, Prisma, Supabase, REST APIs, SaaS dashboards, Three.js and analytics.
 Social media content planning and digital communication experience alongside software development.
 TECHNICAL SKILLS
@@ -13,11 +13,11 @@ Creative UI: Three.js, React Three Fiber, GSAP, Framer Motion, Recharts
 Tools & Foundations: Git, GitHub, Vercel, DSA, OOP, DBMS, Software Engineering
 Marketing: Social Media Management, Content Planning, Copywriting, Brand Communication
 PROFESSIONAL EXPERIENCE
-Social Media Manager Intern | OCAVIOR | 2026 - Present (start date to confirm)
+Social Media Manager Intern | OCAVIOR | 2026 to present (start month to confirm)
 - Support creative ideation, social content planning, writing platform-specific copy and brand communication.
 - Develop LinkedIn, Instagram and Facebook content concepts with an editorial and visual storytelling focus.
-React.js Development Intern | InfoLabz IT Services Pvt. Ltd. | July 3-17, 2026
-- Completed JavaScript fundamentals, ES6, React and API integration during a two-week internship.
+React.js Development Intern | InfoLabz IT Services Pvt. Ltd. | 3 to 17 July 2026
+- Completed JavaScript fundamentals, ES6, React and API integration during a two week internship.
 - Developed an API-based React application; completion certified by InfoLabz on July 18, 2026.
 SELECTED PROJECTS
 Savora | Next.js, TypeScript, PostgreSQL, Prisma
@@ -33,8 +33,8 @@ GymSpot | React, TypeScript, Supabase, Vite
 StudyNotion | React, Redux Toolkit, Three.js, GSAP
 - Enhanced open-source course platform with responsive UI, enrollment and motion features.
 AuditAI | Next.js, TypeScript, Supabase, Gemini API
-- Built an exploratory AI-supported code-audit interface with modern web technologies.
+- Built an exploratory AI assisted code-audit interface with modern web technologies.
 EDUCATION
 BE, Information & Communication Technology | Government Engineering College, Bhavnagar (GTU)
-2023 - 2027 | CGPA 8.04/10
+2023 to 2027 | CGPA 8.04/10
 Silver Bells Public School | CBSE XII: 79.8% | CBSE X: 91.83%
