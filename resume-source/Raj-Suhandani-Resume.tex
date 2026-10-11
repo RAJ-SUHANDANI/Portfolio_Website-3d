@@ -1,0 +1,105 @@
+\documentclass[letterpaper,10pt]{article}
+\usepackage[margin=0.40in,top=0.52in,bottom=0.35in]{geometry}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{needspace}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\hypersetup{hidelinks,pdfauthor={Raj Manish Suhandani},pdftitle={Raj Manish Suhandani Resume}}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\raggedright
+\urlstyle{same}
+\titleformat{\section}{\scshape\fontsize{12}{12}\selectfont}{}{0pt}{}[\titlerule]
+\titlespacing*{\section}{0pt}{9pt}{5pt}
+\setlist[itemize]{leftmargin=24pt,label={\fontsize{6}{6}\selectfont$\bullet$},topsep=2pt,itemsep=1pt,parsep=0pt,partopsep=0pt}
+\newcommand{\entry}[4]{%
+\needspace{44pt}%
+\vspace{2pt}\hspace{10.8pt}\textbf{#1}\hfill #2\par
+\hspace{10.8pt}\textit{#3}\hfill\textit{#4}\par\vspace{1pt}%
+}
+\newcommand{\project}[3]{%
+\needspace{135pt}%
+\vspace{5pt}\hspace{10.8pt}\textbf{\href{#3}{#1}} $\mid$ \textit{#2}\par\vspace{-1pt}%
+}
+\newcommand{\resumeitem}[1]{\item #1}
+\newcommand{\skill}[2]{\hspace{10.8pt}\begin{minipage}[t]{\dimexpr\linewidth-10.8pt\relax}\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\textbf{#1}: #2\end{minipage}\par}
+\begin{document}
+\begin{center}
+{\fontsize{24.8}{27}\selectfont\bfseries Raj Manish Suhandani}\par\vspace{3pt}
+\fontsize{10}{11}\selectfont +91 9586402020 $\mid$ \href{mailto:rajsuhandani11@gmail.com}{rajsuhandani11@gmail.com} $\mid$ \href{https://www.linkedin.com/in/raj-suhandani-a4a393321}{LinkedIn} $\mid$ \href{https://github.com/RAJ-SUHANDANI}{GitHub} $\mid$ Bhavnagar, Gujarat, India
+\end{center}
+\vspace{-9pt}
+\section{Professional Summary}
+\hspace{10.8pt}\begin{minipage}[t]{\dimexpr\linewidth-10.8pt\relax}
+Frontend Developer specializing in React.js, Next.js, and TypeScript with experience building applications powered by AI, SaaS platforms, and interactive user experiences. Proven ability to develop responsive interfaces, integrate REST and external APIs, optimize frontend performance, and prepare applications for production deployment. Strong foundation in Data Structures \& Algorithms, OOP, and Software Engineering, with a keen interest in Full Stack Development, Cloud Computing, and AI technologies.
+\end{minipage}
+\section{Education}
+\entry{Government Engineering College, Bhavnagar (GTU)}{Bhavnagar, India}{Bachelor of Engineering in Information and Communication Technology; CGPA: 8.04/10}{2023 to 2027}
+\entry{Silver Bells Public School}{Bhavnagar, India}{Senior Secondary (XII) (CBSE): 79.8\% $\mid$ Secondary (X) (CBSE): 91.83\%}{2020 to 2022}
+\section{Experience}
+\entry{Social Media Manager Intern at Ocavior}{}{Digital Marketing, Social Media and Content Creation}{2026 to present}
+\begin{itemize}
+\resumeitem{Plan social media content and write copy for LinkedIn, Instagram and Facebook. Contribute to campaign creatives and day to day publishing.}
+\resumeitem{Work with content ideas, visual storytelling and brand communication to help maintain a consistent presence across platforms.}
+\end{itemize}
+\vspace{-2pt}
+\entry{React Development Intern at InfoLabz IT Services Pvt. Ltd.}{Ahmedabad, India}{Summer Internship}{03 Jul 2026 to 17 Jul 2026}
+\begin{itemize}
+\resumeitem{Completed a two week summer internship covering JavaScript ES6, React.js and API integration. Developed an API based React application.}
+\end{itemize}
+\section{Projects}
+\project{Savora}{Next.js, React, TypeScript, PostgreSQL, Prisma, Authentication}{https://github.com/RAJ-SUHANDANI/Savora}
+\begin{itemize}
+\resumeitem{Built a full stack restaurant booking system with customer accounts, a guided reservation process, staff dashboards, menu management, and PostgreSQL data storage.}
+\resumeitem{Prevented overlapping table reservations using PostgreSQL exclusion constraints. Implemented workflows for customers and staff.}
+\end{itemize}
+\project{Veyra}{Next.js, React, TypeScript, Three.js, Tailwind CSS, AI Inspired Analytics}{https://github.com/RAJ-SUHANDANI/Veyra}
+\begin{itemize}
+\resumeitem{Developed an interactive 3D SaaS prototype for managing projects with workspaces, task boards, analytics, a risk visualization, and client portals.}
+\resumeitem{Built responsive dashboards and reusable components with React Three Fiber, Three.js, and interactive data visualization.}
+\end{itemize}
+\project{AuditAI}{Next.js, TypeScript, Tailwind CSS, Supabase API, Google Gemini API}{https://github.com/RAJ-SUHANDANI/AuditAI}
+\begin{itemize}
+\resumeitem{Built an AI assisted code review interface using Next.js and TypeScript to present insights into software quality, security, and maintainability.}
+\resumeitem{Connected Supabase for data management and Google Gemini API for generated audit findings and code review feedback.}
+\resumeitem{Engineered a repository health dashboard with Tailwind CSS, visualizing code quality metrics and scoring through a responsive UI.}
+\resumeitem{Organized the frontend into reusable React components to simplify maintenance and improve the debugging workflow.}
+\end{itemize}
+\project{StudyNotion}{React 18, React Router v6, Redux Toolkit, Tailwind CSS, Three.js, GSAP}{https://github.com/RAJ-SUHANDANI/StudyNotion}
+\begin{itemize}
+\resumeitem{Enhanced an existing open source learning platform with immersive UI experiences, incorporating interactive 3D effects via Three.js and GSAP.}
+\resumeitem{Optimized state management using Redux Toolkit, ensuring predictable data flow across course discovery and enrollment workflows.}
+\resumeitem{Modernized frontend architecture with React Router v6 and refactored legacy components to fully responsive Tailwind CSS designs.}
+\resumeitem{Adapted existing components for mobile and desktop layouts and improved support across major browsers.}
+\end{itemize}
+\project{GymSpot}{React.js, Node.js, Tailwind CSS, Supabase API}{https://github.com/RAJ-SUHANDANI/GymSpot}
+\begin{itemize}
+\resumeitem{Developed a fitness discovery web platform using React.js, connecting users with nearby gyms and wellness centers through an intuitive interface.}
+\resumeitem{Implemented search by location and facility comparison features, simplifying membership discovery and selection for end users.}
+\resumeitem{Built user profiles and owner dashboards consuming REST APIs built with Node.js and Supabase to manage facility information, ratings, and analytics.}
+\resumeitem{Designed responsive interfaces with reusable React components and Tailwind CSS to make key features easy to navigate.}
+\end{itemize}
+\project{VaultIQ}{Next.js, TypeScript, Supabase, Three.js, Recharts}{https://github.com/RAJ-SUHANDANI/VaultIQ}
+\begin{itemize}
+\resumeitem{Built a personal finance dashboard with expense and budget tracking, savings goals, secure authentication, and interactive Recharts analytics.}
+\resumeitem{Integrated Supabase data workflows, responsive dashboard components, and Three.js visual effects.}
+\end{itemize}
+\project{PulseFit}{Next.js, TypeScript, Supabase, Recharts, GSAP}{https://github.com/RAJ-SUHANDANI/PulseFit}
+\begin{itemize}
+\resumeitem{Created a fitness tracking platform with workout logging, analytics, goal setting, habit tracking, and responsive dashboard visualizations.}
+\resumeitem{Used React components, Supabase integration, and interactive motion to support mobile and desktop experiences.}
+\end{itemize}
+\section{Technical Skills}
+\skill{Languages}{C++, JavaScript, TypeScript, Python, C}
+\skill{Frontend}{React.js, Next.js, Tailwind CSS, Three.js, React Three Fiber, GSAP, Responsive Design, Component Architecture}
+\skill{Backend \& Data}{Node.js, Supabase, PostgreSQL, Prisma, SQL, Authentication, Database Design}
+\skill{APIs}{REST APIs, Google Gemini API, Google Cloud Console API, Rapid API, Supabase API}
+\skill{Tools}{Git, GitHub, Vercel}
+\skill{CS Fundamentals}{Data Structures \& Algorithms, OOP, DBMS, Operating Systems, Computer Networks, Software Engineering}
+\skill{Digital Marketing}{Social Media Management, Content Strategy, Copywriting, Content Planning, Brand Communication}
+\skill{Soft Skills}{Problem Solving, Communication, Team Collaboration, Adaptability, Creativity, Innovation}
+\skill{AI Tools for Development}{ChatGPT, Claude, Gemini, Lovable, Antigravity, Vibe Coding}
+\end{document}

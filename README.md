@@ -104,7 +104,7 @@ You can deploy the `out/` folder to Cloudflare Pages or another static hosting s
 
 ```text
 public/
-  Raj-Suhandani-Resume.pdf       Downloadable resume
+  Raj-Suhandani-Resume.pdf       Generated downloadable resume
   Raj-Suhandani-Resume.txt       ATS friendly plain text version
   raj-suhandani-portrait.webp    Optimized personal portrait
 src/
@@ -119,14 +119,17 @@ src/
     Laptop3D.tsx                 Procedural 3D laptop
   lib/
     data.ts                      Projects, skills and experience
-.github/workflows/quality.yml    Build checks
+resume-source/
+  Raj-Suhandani-Resume.tex     Editable resume with original styling
+.github/workflows/quality.yml    Website build checks
+.github/workflows/resume-pdf.yml Resume PDF compilation
 ```
 
 ## Updating content
 
 Project names, descriptions, highlights, tech stacks and live URLs are stored in `src/lib/data.ts`. Add or edit a project there and its case study will be generated through `/work/[slug]`.
 
-The downloadable resume is `public/Raj-Suhandani-Resume.pdf`, while `public/Raj-Suhandani-Resume.txt` provides an accessible text alternative. Keep the PDF, text file and on page biography consistent when details change.
+The resume source is `resume-source/Raj-Suhandani-Resume.tex`. Changes to this source trigger the GitHub Actions resume workflow, which compiles the PDF while retaining its Computer Modern typography and original section headings, then updates `public/Raj-Suhandani-Resume.pdf`. The plain text version remains at `public/Raj-Suhandani-Resume.txt`. Keep all resume variants and the website biography consistent.
 
 The About image is `public/raj-suhandani-portrait.webp`. Replace it with an optimized image of the same name to update the photograph without editing the component.
 

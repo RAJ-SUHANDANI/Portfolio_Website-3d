@@ -1,0 +1,39 @@
+name: Build resume PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "resume-source/**"
+      - ".github/workflows/resume-pdf.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Compile resume from original LaTeX styling
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: Raj-Suhandani-Resume.tex
+          working_directory: resume-source
+          latexmk_use_xelatex: false
+      - name: Verify and publish updated resume
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s resume-source/Raj-Suhandani-Resume.pdf
+          cp resume-source/Raj-Suhandani-Resume.pdf public/Raj-Suhandani-Resume.pdf
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/Raj-Suhandani-Resume.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: refresh resume PDF from reviewed LaTeX source"
+            git push origin HEAD:main
+          fi
