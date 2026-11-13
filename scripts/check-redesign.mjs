@@ -25,6 +25,7 @@ async function viewportTest(name,viewport){
  const response=await page.goto(origin,{waitUntil:'networkidle',timeout:90000});
  assert(response?.status()===200,name+' homepage HTTP 200');
  assert(await page.locator('.art-hero h1').count()===1,name+' hero appears');
+ assert(await page.locator('.art-wordmark svg path').count()===1,name+' actual vector signature visible');
  await checkImage(page,'.art-live-scene .art-screen-art img',name+' hero screenshot loads');
  await checkImage(page,'.art-live-scene .art-mobile-art img',name+' phone screenshot loads');
  const overflow=await page.evaluate(()=>({scroll:document.documentElement.scrollWidth,client:document.documentElement.clientWidth}));
@@ -35,6 +36,36 @@ async function viewportTest(name,viewport){
  assert(old!==now,name+' project switch works');
  await page.getByRole('button',{name:'Everything',exact:true}).click();
  assert(await page.locator('.art-gallery-grid .art-tile').count()===9,name+' lists nine real projects');
+
+ // Featured images must be fully visible within their real browser frames.
+ for(const slug of ['memeismine','convotools']){
+  const card=page.locator('.art-feature-'+(slug==='memeismine'?'meme':'convo'));
+  await card.scrollIntoViewIfNeeded();
+  await page.waitForFunction(slug=>{
+    const img=document.querySelector('.art-feature-'+(slug==='memeismine'?'meme':'convo')+' .art-feature-browser img');
+    return img instanceof HTMLImageElement && img.complete && img.naturalWidth>0;
+  },slug,{timeout:15000});
+  const details=await card.evaluate(element=>{
+    const frame=element.querySelector('.art-feature-browser');
+    const picture=frame.querySelector('img');
+    const stage=element.querySelector('.art-feature-shot');
+    const phone=element.querySelector('.art-feature-mobile');
+    const f=frame.getBoundingClientRect(),i=picture.getBoundingClientRect(),s=stage.getBoundingClientRect(),p=phone.getBoundingClientRect();
+    const shown=getComputedStyle(phone).display!=='none';
+    return {
+      imageInsideFrame:i.left>=f.left-2&&i.right<=f.right+2&&i.top>=f.top-2&&i.bottom<=f.bottom+2,
+      frameInsideStage:f.left>=s.left-2&&f.right<=s.right+2&&f.top>=s.top-2&&f.bottom<=s.bottom+2,
+      phoneInsideStage:!shown||(p.left>=s.left-2&&p.right<=s.right+2&&p.top>=s.top-2&&p.bottom<=s.bottom+2),
+      phoneNotCoveringImage:!shown||p.left>=f.right-2,
+      fit:getComputedStyle(picture).objectFit,
+      naturalWidth:picture.naturalWidth
+    };
+  });
+  assert(details.imageInsideFrame&&details.frameInsideStage&&details.phoneInsideStage&&details.phoneNotCoveringImage&&details.fit==='contain'&&details.naturalWidth>0,
+   name+' '+slug+' preview has no crop or overflow: '+JSON.stringify(details));
+ }
+ await page.locator('.art-features').screenshot({path:path.join(output,'featured-'+name+'.png'),animations:'disabled',timeout:30000});
+
  await page.getByRole('button',{name:'Creative tools',exact:true}).click();
  assert(await page.locator('.art-gallery-grid .art-tile').count()===2,name+' filters to creative projects');
  await page.getByRole('button',{name:'Everything',exact:true}).click();
