@@ -1,5 +1,5 @@
-import AwardPortfolio from '@/components/AwardPortfolio';
+import StudioPortfolio from '@/components/StudioPortfolio';
 
 export default function Home() {
-  return <AwardPortfolio />;
+  return <StudioPortfolio />;
 }
