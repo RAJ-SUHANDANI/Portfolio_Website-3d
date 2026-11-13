@@ -95,7 +95,7 @@ export default function AwardArtifactScene({ mode }: { mode: number }) {
     return () => window.removeEventListener('pointermove', onPointer);
   }, []);
 
-  if (!supported) return <div className="award-artifact-fallback" aria-hidden="true"><span /><span /><span /><b>R/S</b></div>;
+  if (!supported) return <div className="award-artifact-fallback" data-mode={mode} aria-hidden="true"><span /><span /><span /><b>R/S</b></div>;
 
   return (
     <Canvas aria-hidden="true" dpr={[1, 1.5]} camera={{ position: [0, .2, 7.9], fov: 42, near: .1, far: 40 }}
