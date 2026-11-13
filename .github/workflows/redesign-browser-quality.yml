@@ -40,3 +40,4 @@ jobs:
           name: redesign-browser-review
           path: .design-review/
           retention-days: 14
+          include-hidden-files: true
