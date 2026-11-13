@@ -135,6 +135,10 @@ for(const slug of slugs){
  assert(await page.locator('.art-case-header-actions .art-theme-toggle').count()===1,slug+' case theme control exists');
  if(slug==='memeismine'){
   await page.locator('.art-case-header-actions .art-theme-toggle').click();
+  await page.waitForFunction(()=>{
+   const section=document.querySelector('.pc-overview');
+   return document.documentElement.dataset.siteTheme==='dark' && section && getComputedStyle(section).backgroundColor==='rgb(24, 35, 28)';
+  },null,{timeout:5000});
   const sample=await page.locator('.pc-overview').evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
   const currentTheme=await page.locator('html').getAttribute('data-site-theme');
   const ratio=contrast(sample.text,sample.bg);
