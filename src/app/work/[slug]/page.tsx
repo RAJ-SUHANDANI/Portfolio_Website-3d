@@ -10,6 +10,8 @@ import ScreenshotGallery from '@/components/redesign/ScreenshotGallery';
 import {capture} from '@/lib/projectMedia';
 import Signature from '@/components/redesign/Signature';
 import ProjectScrollMotion from '@/components/ProjectScrollMotion';
+import {ThemeToggle} from '@/components/redesign/Theme';
+import ProjectLikeButton from '@/components/redesign/ProjectLikeButton';
 
 export const dynamicParams=false;
 
@@ -37,7 +39,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
   <header className="pc-header">
    <Link href="/" className="pc-logo art-pc-logo" aria-label="Back to Raj's portfolio"><Signature/></Link>
    <span className="pc-header-middle">Selected projects <span>© 2026</span></span>
-   <Link href="/#work" className="pc-back">ALL PROJECTS <ArrowUpRight size={17}/></Link>
+   <div className="art-case-header-actions"><ThemeToggle/><Link href="/#work" className="pc-back">ALL PROJECTS <ArrowUpRight size={17}/></Link></div>
   </header>
 
   <section className="pc-hero">
@@ -46,7 +48,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
    <div className="pc-title-wrap">
     <p className="pc-kicker"><span className="pc-live-dot"/> {story.tagline}</p>
     <h1 className={project.name.length>8?"pc-long-title":""}>{project.name}<span className="pc-fullstop">.</span></h1>
-    <p className="pc-hero-lead">{story.intro}</p>
+    <p className="pc-hero-lead">{story.intro}</p><ProjectLikeButton slug={project.slug} name={project.name}/>
    </div>
    <div className="pc-hero-visual"><ProjectHeroVisual slug={project.slug} name={project.name} live={project.live}/></div>
    <div className="pc-hero-bottom"><span>An inside look at what I made</span><a href="#overview">Keep reading <span aria-hidden="true">↓</span></a><span>PROJECT {story.number} / {String(projects.length).padStart(2,'0')}</span></div>
@@ -119,7 +121,7 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
    <h2>Open the<br/><span>actual website.</span></h2>
    <p className="pc-explore-desc">{project.live?'Visit the application to explore the experience, or open GitHub to see how the code is organized.':'There is no documented live deployment for this project. Explore the repository to inspect the current implementation.'}</p>
    <div className="pc-explore-buttons">
-    <a className="pc-primary-cta" href={project.live||project.github} target="_blank" rel="noopener noreferrer">{project.live?'Visit the website':'EXPLORE SOURCE ON GITHUB'} <ArrowUpRight size={25}/></a>
+    <a className="pc-primary-cta art-magnetic" href={project.live||project.github} target="_blank" rel="noopener noreferrer">{project.live?'Visit the website':'EXPLORE SOURCE ON GITHUB'} <ArrowUpRight size={25}/></a>
     {project.slug!=='auditai'&&<a className="pc-secondary-cta" href={project.github} target="_blank" rel="noopener noreferrer"><Github size={21}/> View the code <ArrowUpRight size={20}/></a>}
    </div>
   </section>

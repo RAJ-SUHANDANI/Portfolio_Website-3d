@@ -3,6 +3,8 @@ import Link from 'next/link';
 import {useEffect,useRef,useState} from 'react';
 import {ArrowUpRight,Menu,X} from 'lucide-react';
 import Signature from '@/components/redesign/Signature';
+import {ThemeToggle} from '@/components/redesign/Theme';
+import ResumeHoverCard from '@/components/redesign/ResumeHoverCard';
 const links=[
  {label:'Work',href:'#work'},
  {label:'About',href:'#about'},
@@ -36,8 +38,10 @@ export default function RedesignNavigation(){
    <Link href="/" className="art-wordmark" aria-label="Raj Suhandani, homepage"><Signature/></Link>
    <nav className="art-header-links" aria-label="Main navigation">
     {links.slice(0,3).map(item=><a href={item.href} key={item.href}>{item.label}</a>)}
+    <ResumeHoverCard label="Resume"/>
    </nav>
    <div className="art-header-right">
+    <ThemeToggle/>
     <a className="art-hello" href="#contact">Say hello <ArrowUpRight size={17}/></a>
     <button className="art-menu-button" type="button" ref={buttonRef} onClick={()=>setOpen(true)} aria-label="Open navigation" aria-haspopup="dialog" aria-controls="art-menu" aria-expanded={open}><Menu size={24}/></button>
    </div>

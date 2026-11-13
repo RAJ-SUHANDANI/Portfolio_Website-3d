@@ -25,6 +25,14 @@ async function viewportTest(name,viewport){
  const response=await page.goto(origin,{waitUntil:'networkidle',timeout:90000});
  assert(response?.status()===200,name+' homepage HTTP 200');
  assert(await page.locator('.art-hero h1').count()===1,name+' hero appears');
+ await page.locator('.art-preloader').waitFor({state:'hidden',timeout:6500});
+ const themeToggle=page.locator('.art-header .art-theme-toggle');
+ await themeToggle.click();
+ assert(await page.locator('html').getAttribute('data-site-theme')==='dark',name+' dark theme applies');
+ const darkColor=await page.locator('.art-work').evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
+ assert(darkColor.text!==darkColor.bg,name+' dark theme text readable');
+ await themeToggle.click();
+ assert(await page.locator('html').getAttribute('data-site-theme')==='light',name+' light theme restores');
  assert(await page.locator('.art-wordmark svg path').count()===1,name+' actual vector signature visible');
  await checkImage(page,'.art-live-scene .art-screen-art img',name+' hero screenshot loads');
  await checkImage(page,'.art-live-scene .art-mobile-art img',name+' phone screenshot loads');
@@ -36,6 +44,19 @@ async function viewportTest(name,viewport){
  assert(old!==now,name+' project switch works');
  await page.getByRole('button',{name:'Everything',exact:true}).click();
  assert(await page.locator('.art-gallery-grid .art-tile').count()===9,name+' lists nine real projects');
+ const memeLike=page.locator('.art-feature-meme .art-like-button');
+ await memeLike.click();
+ assert((await memeLike.locator('.art-like-count').innerText())==='1',name+' clicking like updates local count');
+ const matchingLike=page.locator('.art-tile-memeismine .art-like-button');
+ assert((await matchingLike.locator('.art-like-count').innerText())==='1',name+' duplicate project like remains in sync');
+ await matchingLike.click();
+ assert((await memeLike.locator('.art-like-count').innerText())==='0',name+' unlike synchronizes back to feature');
+ if(name==='desktop'){
+  await page.locator('#approach').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(700);
+  assert(await page.locator('.art-scroll-chapter-name').innerText()==='The approach',name+' scroll phone follows current chapter');
+  await page.locator('#intro').scrollIntoViewIfNeeded();
+ }
 
  // Featured images must be fully visible within their real browser frames.
  for(const slug of ['memeismine','convotools']){
@@ -97,6 +118,8 @@ for(const slug of slugs){
  const res=await page.goto(origin+'/work/'+slug,{waitUntil:'networkidle',timeout:65000});
  assert(res?.status()===200,slug+' case study HTTP 200');
  assert(await page.locator('.pc-hero h1').count()===1,slug+' case title renders');
+ assert(await page.locator('.pc-title-wrap .art-like-button').count()===1,slug+' case has its own like button');
+ assert(await page.locator('.art-case-header-actions .art-theme-toggle').count()===1,slug+' case theme control exists');
  await checkImage(page,'.art-case-frame img',slug+' real desktop screenshot loads');
  assert(await page.locator('.art-case-gallery figure').count()===2,slug+' two authentic screenshot captions');
  await page.getByRole('button',{name:'Phone',exact:false}).click();

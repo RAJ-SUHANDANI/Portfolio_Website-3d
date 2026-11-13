@@ -4,6 +4,7 @@ import {useMemo,useState} from 'react';
 import {ArrowUpRight,ExternalLink} from 'lucide-react';
 import {projects} from '@/lib/data';
 import {capture} from '@/lib/projectMedia';
+import ProjectLikeButton from '@/components/redesign/ProjectLikeButton';
 
 const filters=['Everything','Creative tools','Productivity','Full stack','Fitness','Experiments'] as const;
 const tags:Record<string,string[]>={
@@ -45,7 +46,7 @@ export default function ProjectArchive(){
      <span className="art-tile-view">View the story <ArrowUpRight size={18}/></span>
     </Link>
     <div className="art-tile-meta"><span>{String(projects.findIndex(p=>p.slug===project.slug)+1).padStart(2,'0')}</span><span>{tags[project.slug]?.[0]||'Project'}</span></div>
-    <div className="art-tile-info"><div><h4>{project.name}</h4><p>{nouns[project.slug]}</p></div><a target="_blank" rel="noopener noreferrer" href={project.live||project.github} aria-label={'Open '+project.name+' website'}><ExternalLink size={18}/></a></div>
+    <div className="art-tile-info"><div><h4>{project.name}</h4><p>{nouns[project.slug]}</p></div><div className="art-tile-actions"><ProjectLikeButton slug={project.slug} name={project.name}/><a target="_blank" rel="noopener noreferrer" href={project.live||project.github} aria-label={'Open '+project.name+' website'}><ExternalLink size={18}/></a></div></div>
    </article>)}
   </div>
  </div>;
