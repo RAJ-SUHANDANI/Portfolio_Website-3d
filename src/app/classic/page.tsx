@@ -4,36 +4,18 @@ import { ArrowUpRight } from 'lucide-react';
 import { awardProjects } from '@/lib/awardContent';
 
 export const metadata: Metadata = {
-  title: 'Essential Portfolio — Raj Suhandani',
-  description: 'A lightweight, accessible index of Raj Suhandani’s software engineering and creative development projects.'
+  title: 'Project Index — Raj Suhandani',
+  description: 'An accessible, lightweight index of Raj Suhandani’s software projects, source repositories and published demos.'
 };
 
-export default function Classic() {
-  return (
-    <main className="award-essential">
-      <header className="award-essential-nav">
-        <Link href="/" aria-label="Return to the interactive portfolio"><img src="/brand-signature.svg" alt="Raj Suhandani" width={205} height={74} /></Link>
-        <Link href="/">INTERACTIVE EDITION ↗</Link>
-      </header>
-      <section className="award-essential-intro">
-        <p className="award-overline">ANOTHER WAY TO EXPLORE / NO WEBGL REQUIRED</p>
-        <h1>THE WORK.<br /><em>WITHOUT THE NOISE.</em></h1>
-        <p>I&apos;m Raj Suhandani, a software engineer and creative developer. Below is a direct index of my published work, with links to source code and available demos. No animated scenes, just the projects.</p>
-      </section>
-      <section className="award-essential-list" aria-labelledby="essential-project-heading">
-        <h2 id="essential-project-heading">SELECTED &amp; OTHER PROJECTS</h2>
-        {awardProjects.map((project) => (
-          <article key={project.slug}>
-            <div><small>{project.number} / {project.category.toUpperCase()}</small><h3>{project.name}</h3><p>{project.description}</p></div>
-            <div className="award-essential-actions">
-              <Link href={'/work/' + project.slug}>CASE STUDY <ArrowUpRight size={16} /></Link>
-              <a href={project.github} target="_blank" rel="noopener noreferrer">SOURCE <ArrowUpRight size={16} /></a>
-              {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">LIVE SITE <ArrowUpRight size={16} /></a>}
-            </div>
-          </article>
-        ))}
-      </section>
-      <footer className="award-essential-footer"><a href="mailto:rajsuhandani11@gmail.com">LET&apos;S TALK ↗</a><Link href="/resume">RÉSUMÉ ↗</Link><Link href="/">RETURN TO INTERACTIVE VIEW ↗</Link></footer>
-    </main>
-  );
+export default function ClassicPage() {
+  return <main className="studio-simple">
+    <header className="studio-document-nav"><Link href="/" aria-label="Return to portfolio"><img src="/brand-signature.svg" alt="Raj Suhandani" width={183} height={65} /></Link><Link href="/">INTERACTIVE VIEW ↗</Link></header>
+    <section className="studio-simple-opening"><p>NO WEBGL. NO ANIMATION. JUST THE THINGS I&apos;VE MADE.</p><h1>THE WORK<br /><em>INDEX.</em></h1><p>Hi, I&apos;m Raj. This edition is designed for quick browsing, low-power devices and visitors who would rather skip the 3D archive.</p></section>
+    <section className="studio-simple-list" aria-label="Project index">{awardProjects.map(project => <article key={project.slug}>
+      <span>{project.number} / {project.year}</span>
+      <div><h2>{project.name}</h2><p>{project.description}</p><div className="studio-simple-links"><Link href={'/work/' + project.slug}>CASE FILE <ArrowUpRight size={15} /></Link><a href={project.github} target="_blank" rel="noopener noreferrer">SOURCE <ArrowUpRight size={15} /></a>{project.live && <a href={project.live} target="_blank" rel="noopener noreferrer">OPEN PROJECT <ArrowUpRight size={15} /></a>}</div></div>
+    </article>)}</section>
+    <footer className="studio-document-footer"><a href="mailto:rajsuhandani11@gmail.com">GET IN TOUCH ↗</a><Link href="/resume">RÉSUMÉ ↗</Link><Link href="/">BACK TO THE STUDIO ↑</Link></footer>
+  </main>;
 }
