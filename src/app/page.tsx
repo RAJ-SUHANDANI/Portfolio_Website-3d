@@ -1,2 +1,5 @@
-import Portfolio from '@/components/Portfolio';
-export default function Home(){return <Portfolio/>}
+import AwardPortfolio from '@/components/AwardPortfolio';
+
+export default function Home() {
+  return <AwardPortfolio />;
+}
