@@ -22,10 +22,22 @@ async function section(page,selector,name,snapshot){
  assert(await el.count()===1,name+' target exists');
  const before=await el.evaluate(n=>({state:n.dataset.motionState||'pending',opacity:Number(getComputedStyle(n).opacity)}));
  await el.scrollIntoViewIfNeeded({timeout:16000});
- await page.waitForFunction(sel=>{
-  const target=document.querySelector(sel);
-  return target instanceof HTMLElement&&target.dataset.motionState==='visible';
- },selector,{timeout:4500});
+ try{
+  await page.waitForFunction(sel=>{
+   const target=document.querySelector(sel);
+   return target instanceof HTMLElement&&target.dataset.motionState==='visible';
+  },selector,{timeout:6000});
+ }catch(error){
+  const debug=await el.evaluate(n=>({
+   state:n.dataset.motionState||'pending',
+   rect:{top:n.getBoundingClientRect().top,bottom:n.getBoundingClientRect().bottom},
+   opacity:getComputedStyle(n).opacity,
+   clip:getComputedStyle(n).clipPath,
+   active:document.documentElement.dataset.scrollMotion,
+   scrollY:window.scrollY
+  }));
+  throw new Error('Reveal did not trigger for '+name+': '+JSON.stringify(debug),{cause:error});
+ }
  await page.waitForTimeout(1250);
  const after=await el.evaluate(n=>({
   state:n.dataset.motionState,

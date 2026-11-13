@@ -30,15 +30,18 @@ export default function ScrollChoreography(){
   let registerFrame=0;
   const all=new Set<HTMLElement>();
   const drift=new Set<HTMLElement>();
+  const pending=new Set<HTMLElement>();
+  let revealFrame=0;
 
   const observer=new IntersectionObserver(entries=>{
    for(const entry of entries){
     if(!entry.isIntersecting)continue;
     const element=entry.target as HTMLElement;
     element.dataset.motionState='visible';
+    pending.delete(element);
     observer.unobserve(element);
    }
-  },{root:null,rootMargin:'0px 0px -8% 0px',threshold:0.06});
+  },{root:null,rootMargin:'0px 0px -6% 0px',threshold:0});
 
   const driftObserver=new IntersectionObserver(entries=>{
    for(const entry of entries){
@@ -59,6 +62,7 @@ export default function ScrollChoreography(){
     if(rect.top < window.innerHeight*.94 && rect.bottom > 0){
      element.dataset.motionState='visible';
     }else{
+     pending.add(element);
      observer.observe(element);
     }
    });
@@ -68,8 +72,28 @@ export default function ScrollChoreography(){
     driftObserver.observe(element);
    });
   }
+  function scanVisible(){
+   revealFrame=0;
+   if(cancelled || document.hidden)return;
+   const boundary=window.innerHeight*.91;
+   for(const element of pending){
+    if(!element.isConnected){pending.delete(element);observer.unobserve(element);continue;}
+    const rect=element.getBoundingClientRect();
+    // Geometry fallback for headings with a heavily clipped initial shape.
+    // The observer remains the primary path; this makes fast jumps reliable.
+    if(rect.top<boundary && rect.bottom>0){
+     element.dataset.motionState='visible';
+     pending.delete(element);
+     observer.unobserve(element);
+    }
+   }
+  }
+  function scheduleReveal(){if(!revealFrame)revealFrame=requestAnimationFrame(scanVisible);}
   function scheduleDiscover(){
-   if(!registerFrame)registerFrame=requestAnimationFrame(discover);
+   if(!registerFrame)registerFrame=requestAnimationFrame(()=>{
+    discover();
+    scanVisible();
+   });
   }
   function updateDrift(){
    frame=0;
@@ -84,7 +108,7 @@ export default function ScrollChoreography(){
     element.style.setProperty('--scroll-drift',amount.toFixed(2)+'px');
    }
   }
-  function scheduleDrift(){if(!frame)frame=requestAnimationFrame(updateDrift);}
+  function scheduleDrift(){if(!frame)frame=requestAnimationFrame(updateDrift);scheduleReveal();}
   function onVisible(){if(!document.hidden)scheduleDrift();}
 
   // First scan before switching on the reveal CSS avoids an empty first frame.
@@ -106,6 +130,8 @@ export default function ScrollChoreography(){
    mutations.disconnect();
    all.clear();
    drift.clear();
+   pending.clear();
+   cancelAnimationFrame(revealFrame);
    cancelAnimationFrame(frame);
    cancelAnimationFrame(registerFrame);
    window.removeEventListener('scroll',scheduleDrift);
