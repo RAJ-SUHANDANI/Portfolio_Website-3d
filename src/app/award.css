@@ -514,3 +514,15 @@ body { margin: 0; }
   .award-site *, .award-case * { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .award-ticker > div { animation: none; }
 }
+
+/* The WebGL-free sculpture is still an interactive artifact on touch devices. */
+.award-artifact-fallback > span { transition: transform .9s cubic-bezier(.2,.8,.2,1),border-color .7s; }
+.award-artifact-fallback[data-mode="1"] > span:nth-child(1) { transform: rotateX(74deg) rotateY(0deg) scale(.88); }
+.award-artifact-fallback[data-mode="1"] > span:nth-child(2) { transform: rotateX(-74deg) rotateY(0deg) scale(.88); }
+.award-artifact-fallback[data-mode="1"] > span:nth-child(3) { transform: rotateX(0deg) rotateY(74deg) scale(.88); }
+.award-artifact-fallback[data-mode="2"] > span:nth-child(1) { transform: rotateX(48deg) rotateY(48deg) scale(1.08); border-color: #d9f17a; }
+.award-artifact-fallback[data-mode="2"] > span:nth-child(2) { transform: rotateX(-48deg) rotateY(50deg) scale(1.11); }
+.award-artifact-fallback[data-mode="2"] > span:nth-child(3) { transform: rotateX(20deg) rotateY(72deg) scale(1.06); }
+@media (prefers-reduced-motion: reduce) {
+  .award-artifact-fallback > span { transition: none; }
+}
