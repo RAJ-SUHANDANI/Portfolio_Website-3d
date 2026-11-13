@@ -213,7 +213,7 @@ export default function AwardPortfolio() {
             <div className="award-artifact-host" aria-label="An interactive kinetic sculpture representing experimentation in digital space">
               {sceneReady && !reduced && !motionOff
                 ? <ArtifactScene mode={modelMode} />
-                : <div className="award-artifact-fallback" aria-hidden="true"><span /><span /><span /><b>R/S</b></div>}
+                : <div className="award-artifact-fallback" data-mode={modelMode} aria-hidden="true"><span /><span /><span /><b>R/S</b></div>}
               <div className="award-artifact-mark"><span>OBJ. 001</span><span>AN EXERCISE IN FORM</span></div>
               <div className="award-artifact-controls" aria-label="Choose sculpture state">
                 {['ORBIT', 'ALIGN', 'PULSE'].map((name, index) => <button key={name} type="button" className={modelMode === index ? 'is-active' : ''} onClick={() => setModelMode(index)} aria-pressed={modelMode === index}>{String(index + 1).padStart(2, '0')} {name}</button>)}
