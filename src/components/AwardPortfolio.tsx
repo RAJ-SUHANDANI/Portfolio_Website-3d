@@ -74,10 +74,17 @@ function ProjectVisual({ project }: { project: (typeof featuredProjects)[number]
 function ProjectRow({ project, index }: { project: (typeof featuredProjects)[number]; index: number }) {
   return (
     <Reveal className={'award-project-row award-project-row-' + (index % 2 ? 'reverse' : 'normal')}>
-      <Link href={'/work/' + project.slug} className="award-project-visual-link" aria-label={'View ' + project.name + ' case study'}>
-        <ProjectVisual project={project} />
-        <span className="award-project-corner"><ArrowUpRight size={23} strokeWidth={1.5} /></span>
-      </Link>
+      {project.slug === 'convotools' ? (
+        <div className="award-project-visual-link">
+          <ProjectVisual project={project} />
+          <Link href={'/work/' + project.slug} className="award-project-corner award-project-corner-live" aria-label={'View ' + project.name + ' case study'}><ArrowUpRight size={23} strokeWidth={1.5} /></Link>
+        </div>
+      ) : (
+        <Link href={'/work/' + project.slug} className="award-project-visual-link" aria-label={'View ' + project.name + ' case study'}>
+          <ProjectVisual project={project} />
+          <span className="award-project-corner"><ArrowUpRight size={23} strokeWidth={1.5} /></span>
+        </Link>
+      )}
       <div className="award-project-copy">
         <div className="award-project-index"><span>PROJECT {project.number} / {String(featuredProjects.length).padStart(2, '0')}</span><span>{project.year}</span></div>
         <p className="award-project-category">{project.category}</p>
