@@ -533,3 +533,73 @@ body { margin: 0; }
   .award-project-corner { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(.65); }
   .award-project-corner-live { background: var(--award-acid); }
 }
+
+/* Consistent auxiliary pages: résumé and an intentionally low-motion edition. */
+.award-resume, .award-essential { background: var(--award-paper); color: var(--award-ink); min-height: 100vh; font-family: 'DM Sans',sans-serif; }
+.award-resume *, .award-essential * { box-sizing: border-box; }
+.award-resume-nav, .award-essential-nav { display: flex; justify-content: space-between; align-items: center; padding: 23px clamp(22px,5vw,85px); border-bottom: 1px solid #c4c9bb; min-height: 98px; }
+.award-resume-nav img, .award-essential-nav img { display: block; width: clamp(150px,15vw,205px); height: auto; }
+.award-resume-nav > a:last-child, .award-essential-nav > a:last-child { display: flex; align-items: center; gap: 10px; font: 11px 'Space Mono',monospace; color: #536252; }
+.award-resume-nav > a:last-child:hover, .award-essential-nav > a:last-child:hover { color: #c45e43; }
+.award-resume-hero { padding: 80px clamp(22px,6vw,110px) 110px; }
+.award-resume-hero .award-overline { margin-top: 90px; }
+.award-resume-hero h1, .award-essential-intro h1 { font: 600 clamp(85px,12vw,215px)/.85 'Space Grotesk',sans-serif; letter-spacing: -.09em; margin-bottom: 75px; }
+.award-resume-hero h1 em, .award-essential-intro h1 em { font: 400 .8em Georgia,serif; letter-spacing: -.09em; }
+.award-resume-hero h1 em { color: #9dba80; }
+.award-resume-actions { display: flex; gap: 65px; justify-content: space-between; align-items: flex-end; border-top: 1px solid #b4bfb1; padding-top: 25px; }
+.award-resume-actions p { max-width: 450px; font: 17px/1.6 'DM Sans',sans-serif; color: #616c62; }
+.award-resume-actions > div { display: flex; gap: 12px; flex-wrap: wrap; }
+.award-resume-actions a { display: flex; align-items: center; justify-content: space-between; gap: 35px; padding: 20px 24px; background: #202d21; color: white; font: 10px 'Space Mono',monospace; }
+.award-resume-actions a:last-child { background: transparent; color: #202d21; border: 1px solid #202d21; }
+.award-resume-actions a:hover { background: #456246; color: white; }
+.award-resume-document { background: #dce4d9; padding: 85px clamp(22px,7vw,135px) 100px; }
+.award-resume-document-heading { display: flex; justify-content: space-between; gap: 20px; font: 10px 'Space Mono',monospace; border-top: 1px solid #9fac9d; padding-top: 15px; margin-bottom: 33px; }
+.award-resume-document iframe { display: block; margin: auto; width: min(100%,960px); min-height: 750px; height: 1050px; border: none; background: #fff; box-shadow: 0 20px 55px #17221724; }
+.award-resume-document > p { margin: 23px auto 0; max-width: 960px; font-size: 13px; color: #5b675b; }
+.award-resume-document > p a { text-decoration: underline; text-underline-offset: 3px; }
+.award-resume-footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px clamp(22px,5vw,85px); background: #172419; color: #e8efe5; font: 10px 'Space Mono',monospace; }
+.award-essential-nav { background: #e8eadf; }
+.award-essential-intro { padding: 110px clamp(22px,6vw,110px) 120px; }
+.award-essential-intro h1 { max-width: 1450px; font-size: clamp(64px,9.7vw,178px); margin: 38px 0 53px; }
+.award-essential-intro h1 em { color: #859b7d; }
+.award-essential-intro > p:last-child { font: 19px/1.75 'DM Sans',sans-serif; color: #576357; max-width: 690px; }
+.award-essential-list { padding: 30px clamp(22px,6vw,110px) 110px; }
+.award-essential-list > h2 { font: 11px 'Space Mono',monospace; color: #687667; padding-bottom: 25px; }
+.award-essential-list > article { border-top: 1px solid #b3bfb0; padding: 34px 0 42px; display: flex; align-items: end; justify-content: space-between; gap: 55px; }
+.award-essential-list > article:last-child { border-bottom: 1px solid #b3bfb0; }
+.award-essential-list article small { font: 10px 'Space Mono',monospace; color: #697567; }
+.award-essential-list article h3 { margin: 15px 0; font: 500 clamp(39px,5vw,82px) 'Space Grotesk',sans-serif; letter-spacing: -.075em; }
+.award-essential-list article p { font: 15px/1.65 'DM Sans',sans-serif; max-width: 720px; color: #636c63; }
+.award-essential-actions { flex: none; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.award-essential-actions a { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid currentColor; padding-bottom: 10px; white-space: nowrap; font: 10px 'Space Mono',monospace; }
+.award-essential-actions a:hover { color: #c45e43; }
+.award-essential-footer { display: flex; flex-wrap: wrap; gap: 45px; padding: 45px clamp(22px,6vw,110px); background: #172419; color: #e9f0e5; font: 11px 'Space Mono',monospace; }
+.award-essential-footer a:hover { color: var(--award-acid); }
+@media(max-width:860px) {
+  .award-resume-actions, .award-essential-list > article { flex-direction: column; align-items: flex-start; gap: 30px; }
+  .award-resume-hero h1 { font-size: clamp(65px,12vw,120px); }
+  .award-resume-document iframe { height: 760px; min-height: 600px; }
+  .award-essential-intro h1 { font-size: clamp(58px,11vw,102px); }
+}
+@media(max-width:550px) {
+  .award-resume-nav, .award-essential-nav { min-height: 75px; padding: 15px 18px; }
+  .award-resume-nav img, .award-essential-nav img { width: 145px; }
+  .award-resume-nav > a:last-child, .award-essential-nav > a:last-child { font-size: 9px; }
+  .award-resume-nav > a:last-child svg { display: none; }
+  .award-resume-hero, .award-essential-intro { padding: 66px 18px 85px; }
+  .award-resume-hero .award-overline { margin-top: 75px; }
+  .award-resume-hero h1 { font-size: 64px; margin-bottom: 50px; }
+  .award-resume-actions p { font-size: 15px; }
+  .award-resume-actions > div { width: 100%; }
+  .award-resume-actions a { width: 100%; }
+  .award-resume-document { padding: 60px 18px; }
+  .award-resume-document-heading { font-size: 9px; }
+  .award-resume-document iframe { height: 560px; min-height: 420px; }
+  .award-resume-footer { flex-direction: column; padding: 30px 18px; }
+  .award-essential-intro h1 { font-size: 57px; }
+  .award-essential-intro > p:last-child { font-size: 16px; }
+  .award-essential-list { padding: 30px 18px 90px; }
+  .award-essential-list article h3 { font-size: 49px; }
+  .award-essential-actions { gap: 17px; }
+  .award-essential-footer { padding: 38px 18px; gap: 27px; }
+}
