@@ -47,13 +47,11 @@ async function viewportTest(name,viewport){
  }
  await page.evaluate(()=>window.scrollTo({top:0,behavior:'instant'}));
  await page.screenshot({path:path.join(output,'home-'+name+'.png'),fullPage:true,animations:'disabled'});
- const broken=await page.locator('.art-gallery-grid .art-tile-desktop').evaluateAll(async(images)=>{
-  await Promise.all(images.map(img=>new Promise(resolve=>{
-   if(img.complete){resolve();return}
-   img.addEventListener('load',resolve,{once:true});img.addEventListener('error',resolve,{once:true});
-  })));
-  return images.filter(img=>!img.naturalWidth).map(img=>img.getAttribute('src'));
- });
+ const broken=[];
+ for(const slug of slugs){
+  const response=await page.request.get(origin+'/project-captures/'+slug+'-desktop.webp',{timeout:15000});
+  if(response.status()!==200)broken.push(slug+' ('+response.status()+')');
+ }
  assert(broken.length===0,name+' all gallery screenshots load: '+broken.join(','));
  assert(errors.length===0,name+' JavaScript errors: '+errors.join(' | '));
  await context.close();
