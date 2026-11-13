@@ -23,9 +23,9 @@ jobs:
       - run: npm install --no-save playwright sharp --no-audit --no-fund
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - name: Serve the production build
+      - name: Serve the static export
         run: |
-          npm run start -- -p 3000 > /tmp/redesign-server.log 2>&1 &
+          npx --yes serve@14 out --listen 3000 > /tmp/redesign-server.log 2>&1 &
           for i in $(seq 1 45); do
             if curl -fsS http://127.0.0.1:3000 >/dev/null; then exit 0; fi
             sleep 2
