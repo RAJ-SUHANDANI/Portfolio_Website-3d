@@ -5,6 +5,7 @@ import { join } from 'node:path';
 export const alt = 'Raj Suhandani — Make Ideas Feel Real. The Proof Lab.';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
+export const dynamic = 'force-static';
 
 export default async function OpenGraphImage() {
   const signature = (await readFile(join(process.cwd(), 'public', 'brand-signature.svg'), 'utf8'))
