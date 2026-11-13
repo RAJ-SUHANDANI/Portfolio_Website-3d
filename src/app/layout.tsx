@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     description: 'The Proof Lab. An interactive exhibition of real products, software engineering and creative technology.'
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: 'Raj Suhandani — Make Ideas Feel Real.',
     description: 'The Proof Lab — creative engineering, useful products and experiments.'
   },
