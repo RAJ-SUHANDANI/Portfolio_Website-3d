@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import './award.css';
 import './studio.css';
 
 export const metadata: Metadata = {
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Raj Suhandani — I Build Mine.',
-    description: 'The Proof Lab — creative engineering, useful products and experiments.'
+    description: 'A personal internet space where code, design and playful experiments meet real software.'
   },
   robots: { index: true, follow: true }
 };
