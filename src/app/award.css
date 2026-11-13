@@ -526,3 +526,10 @@ body { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .award-artifact-fallback > span { transition: none; }
 }
+
+/* Keep the real ConvoTools switches interactive; the project action is a sibling link. */
+.award-project-corner-live { pointer-events: auto; }
+@media (hover: none) {
+  .award-project-corner { opacity: 1; pointer-events: auto; transform: translate(-50%,-50%) scale(.65); }
+  .award-project-corner-live { background: var(--award-acid); }
+}
