@@ -5,7 +5,12 @@ import {capture} from '@/lib/projectMedia';
 
 const chapters=[
  {id:'intro',label:'Opening',type:'image',src:capture('memeismine','mobile')},
- {id:'work',label:'The work',type:'image',src:capture('convotools','mobile')},
+ {id:'work',label:'The work',type:'image',src:capture('memeismine','mobile')},
+ {id:'chapter-memeismine',label:'Meme Is Mine',type:'image',src:capture('memeismine','mobile')},
+ {id:'chapter-convotools',label:'ConvoTools',type:'image',src:capture('convotools','mobile')},
+ {id:'chapter-veyra',label:'Veyra',type:'image',src:capture('veyra','mobile')},
+ {id:'chapter-savora',label:'Savora',type:'image',src:capture('savora','mobile')},
+ {id:'archive',label:'Nine projects',type:'image',src:capture('auditai','mobile')},
  {id:'note',label:'A thought',type:'quote',text:'Could this actually work?'},
  {id:'approach',label:'The approach',type:'quote',text:'Pretty is not the whole point.'},
  {id:'about',label:'About Raj',type:'portrait',src:'/raj-suhandani-portrait.webp'},
@@ -39,7 +44,7 @@ export default function ScrollPhone(){
   return()=>{cancelAnimationFrame(frame);window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};
  },[]);
  const chapter=chapters[active];
- return <motion.aside className="art-scroll-viewport" aria-hidden="true" initial={false} animate={{opacity:show?1:0,y:show?0:15,pointerEvents:'none',top:(29+active*5)+'vh'}} transition={reduced?{duration:0}:{duration:.48,ease:[.2,.8,.2,1]}}>
+ return <motion.aside className="art-scroll-viewport" aria-hidden="true" initial={false} animate={{opacity:show?1:0,y:show?0:15,pointerEvents:'none',top:(29+active/(chapters.length-1)*32)+'vh'}} transition={reduced?{duration:0}:{duration:.48,ease:[.2,.8,.2,1]}}>
   <div className="art-scroll-chapter">{String(active+1).padStart(2,'0')} <span>/</span> {String(chapters.length).padStart(2,'0')}</div>
   <div className="art-scroll-device">
    <span className="art-scroll-device-notch"/>

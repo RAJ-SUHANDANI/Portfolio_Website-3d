@@ -32,7 +32,7 @@ const nouns:Record<string,string>={
 export default function ProjectArchive(){
  const [filter,setFilter]=useState<(typeof filters)[number]>('Everything');
  const filtered=useMemo(()=>projects.filter(project=>filter==='Everything'||tags[project.slug]?.includes(filter)),[filter]);
- return <div className="art-archive">
+ return <div className="art-archive" id="archive">
   <div className="art-archive-heading"><div><p className="art-eyebrow art-eyebrow-dark">There's more.</p><h3>The rest of the<br/><em>rabbit holes.</em></h3></div><p>Not everything belongs in the same category. That is probably my favorite part.</p></div>
   <div className="art-filter-bar" role="group" aria-label="Filter the project gallery">
    {filters.map(name=><button type="button" aria-pressed={filter===name} className={filter===name?'active':''} key={name} onClick={()=>setFilter(name)}>{name}</button>)}

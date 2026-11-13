@@ -25,7 +25,7 @@ function FeatureLink({slug,live,name}:{slug:string;live:string;name:string}){
 }
 function FeaturedWork(){
  return <div className="art-features">
-  {source.slice(0,2).map((project,index)=><article className={'art-feature-large art-feature-'+project.tone} key={project.slug}>
+  {source.slice(0,2).map((project,index)=><article id={'chapter-'+project.slug} className={'art-feature-large art-feature-'+project.tone} key={project.slug}>
    <div className="art-feature-words"><div className="art-feature-meta"><span>{project.number} of 04</span><span>{project.type}</span></div><div><p className="art-feature-thought">{project.tagline}</p><h3>{project.slug==='memeismine'?<>Meme Is<br/>Mine<span>.</span></>:<>Convo<br/>Tools<span>.</span></>}</h3><p className="art-feature-description">{project.description}</p></div><FeatureLink slug={project.slug} live={project.live} name={project.name}/></div>
    <Link href={'/work/'+project.slug} className="art-feature-shot" aria-label={'Explore the '+project.name+' case study'}>
     <div className="art-feature-browser"><div className="art-feature-chrome"><span><i/><i/><i/></span><small>{new URL(project.live).hostname}</small><ArrowUpRight size={15}/></div><img src={capture(project.slug)} alt={'Real screenshot of the '+project.name+' website'} width={1560} height={980} loading="lazy" decoding="async"/></div>
@@ -34,7 +34,7 @@ function FeaturedWork(){
    </Link>
   </article>)}
   <div className="art-feature-duo">
-   {source.slice(2).map(project=><article className={'art-feature-small art-feature-'+project.tone} key={project.slug}>
+   {source.slice(2).map(project=><article id={'chapter-'+project.slug} className={'art-feature-small art-feature-'+project.tone} key={project.slug}>
     <Link href={'/work/'+project.slug} className="art-small-photo" aria-label={'View '+project.name+' case study'}>
      <img src={capture(project.slug)} alt={'Screenshot of the deployed '+project.name+' website'} width={1560} height={980} loading="lazy" decoding="async"/>
      <span className="art-small-open">View case study <ArrowUpRight size={18}/></span>
