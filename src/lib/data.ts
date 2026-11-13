@@ -21,6 +21,31 @@ export const profile = {
 
 export const projects: Project[] = [
   {
+    slug: "memeismine",
+    name: "Meme Is Mine",
+    category: "CREATIVE TOOLS / IMAGE & VIDEO",
+    summary: "Meme Is Mine is a free browser-based meme studio for discovering formats, editing images and video reactions, and exporting original captions and creations.",
+    approach: "A complete creative workflow connects image and video template libraries, caption and overlay editing, browser-based exports, and a personal Studio. Appwrite provides verified user accounts and likes; drafts and collections stay in the current browser with optional manual backup.",
+    stack: ["Next.js", "TypeScript", "React", "Motion", "Appwrite", "FFmpeg"],
+    github: "https://github.com/RAJ-SUHANDANI/MemeIsMine",
+    live: "https://memeismine.vercel.app",
+    features: ["Image and video meme editors", "Caption controls, overlays and browser export", "Template discovery and short-form media previews", "Local Studio drafts, collections and backup"],
+    color: "#E6A391"
+  },
+  {
+    slug: "convotools",
+    name: "ConvoTools",
+    category: "PRODUCTIVITY / FILE UTILITIES",
+    summary: "ConvoTools combines practical browser-based PDF, image, document, spreadsheet, media and developer utilities in one coherent file workspace.",
+    approach: "A 42-entry tool registry across 10 categories connects file selection, format-specific operations and downloads. Thirty-eight entries expose tools or editor workflows; four AI lab entries remain explicitly marked coming soon. Supported conversions run locally in the browser and optional engines load on demand.",
+    stack: ["Next.js", "TypeScript", "React", "GSAP", "PDF.js", "FFmpeg"],
+    github: "https://github.com/RAJ-SUHANDANI/ConvoTools",
+    live: "https://convotool.vercel.app",
+    features: ["42 tools across 10 categories; four AI tools coming soon", "PDF conversion, merging and organizing", "Image, document, spreadsheet and media workflows", "Client-side processing, local workspace and optional engines"],
+    color: "#D3C8F5"
+  },
+
+  {
     slug: "veyra",
     name: "Veyra",
     category: "PRODUCTIVITY / INTERACTIVE 3D",
@@ -110,7 +135,7 @@ export const experience = [
   {
     title: "Social Media Manager Intern",
     company: "Ocavior",
-    date: "2026 to present (start month to confirm)",
+    date: "2026 — present",
     description: "Plan social media content and write copy for LinkedIn, Instagram and Facebook. Contribute to campaign ideas, visual storytelling and brand communication.",
     skills: ["Social media management", "Content planning", "Copywriting", "Brand communication"]
   },

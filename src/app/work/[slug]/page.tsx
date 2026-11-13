@@ -39,14 +39,14 @@ export default async function ProjectPage({params}:{params:Promise<{slug:string}
 
   <section className="pc-hero">
    <div className="pc-grid" aria-hidden="true"/>
-   <div className="pc-hero-superline"><span>SELECTED WORK <b> / {story.number} OF 07</b></span><span>{story.scope}</span></div>
+   <div className="pc-hero-superline"><span>SELECTED WORK <b> / {story.number} OF {String(projects.length).padStart(2,'0')}</b></span><span>{story.scope}</span></div>
    <div className="pc-title-wrap">
     <p className="pc-kicker"><span className="pc-live-dot"/> {story.tagline}</p>
     <h1 className={project.name.length>8?"pc-long-title":""}>{project.name}<span className="pc-fullstop">.</span></h1>
     <p className="pc-hero-lead">{story.intro}</p>
    </div>
    <div className="pc-hero-visual"><ProjectDevice project={project} story={story}/></div>
-   <div className="pc-hero-bottom"><span>ENGINEERING / DESIGN / EXPLORATION</span><a href="#overview">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>PROJECT {story.number} / 07</span></div>
+   <div className="pc-hero-bottom"><span>ENGINEERING / DESIGN / EXPLORATION</span><a href="#overview">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>PROJECT {story.number} / {String(projects.length).padStart(2,'0')}</span></div>
   </section>
 
   <div className="pc-info-bar">

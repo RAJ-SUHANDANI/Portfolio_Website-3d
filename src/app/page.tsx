@@ -1,2 +1,2 @@
-import Portfolio from '@/components/Portfolio';
-export default function Home(){return <Portfolio/>}
+import EditorialPortfolio from '@/components/redesign/EditorialPortfolio';
+export default function Home(){return <EditorialPortfolio/>}
