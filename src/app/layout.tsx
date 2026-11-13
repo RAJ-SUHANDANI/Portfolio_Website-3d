@@ -1,4 +1,9 @@
 import type { Metadata } from 'next';
+import { Archivo_Black, DM_Sans, IBM_Plex_Mono } from 'next/font/google';
+
+const display = Archivo_Black({ subsets: ['latin'], weight: '400', display: 'swap', variable: '--studio-archivo' });
+const bodyFont = DM_Sans({ subsets: ['latin'], display: 'swap', variable: '--studio-dm' });
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400','500','600'], display: 'swap', variable: '--studio-mono' });
 import './globals.css';
 import './studio.css';
 
@@ -31,5 +36,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en" className={`${display.variable} ${bodyFont.variable} ${mono.variable}`}><body>{children}</body></html>;
 }
