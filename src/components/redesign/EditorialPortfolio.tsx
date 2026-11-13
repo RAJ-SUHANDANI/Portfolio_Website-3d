@@ -1,137 +1,115 @@
 import Link from 'next/link';
-import {ArrowDown,ArrowRight,ArrowUpRight,Download,Github,Linkedin,Mail} from 'lucide-react';
-import {profile,projects,experience} from '@/lib/data';
+import {ArrowDown,ArrowRight,ArrowUpRight,Download,ExternalLink,Github,Linkedin,Mail} from 'lucide-react';
+import {experience,profile} from '@/lib/data';
 import RedesignNavigation from '@/components/redesign/Navigation';
-import Workstation from '@/components/redesign/Workstation';
+import LivePreview from '@/components/redesign/LivePreview';
 import ProjectArchive from '@/components/redesign/ProjectArchive';
+import {capture} from '@/lib/projectMedia';
+import Signature from '@/components/redesign/Signature';
 
-const memeEditor='https://raw.githubusercontent.com/RAJ-SUHANDANI/MemeIsMine/main/public/editor-preview.jpg';
-const veyraScreen='https://raw.githubusercontent.com/RAJ-SUHANDANI/Veyra/main/screenshots/03-dashboard-overview.png';
-const savoraScreen='https://raw.githubusercontent.com/RAJ-SUHANDANI/Savora/main/docs/screenshots/01-home-desktop.jpg';
+const source=[
+ {number:'01',name:'Meme Is Mine',slug:'memeismine',type:'Creative tools',tagline:'Memes should be fun to make, too.',description:'I wanted a faster way to turn a familiar reaction into something personal. This is a proper image and video meme studio with a template library, editing tools and a place to keep your work.',live:'https://memeismine.vercel.app/',tone:'meme'},
+ {number:'02',name:'ConvoTools',slug:'convotools',type:'Utility workspace',tagline:'A lot of little jobs. One good place to do them.',description:'Most people just need to resize an image, fix a PDF or convert a file. I brought the everyday tools together, with processing that stays in the browser when supported.',live:'https://convotool.vercel.app/',tone:'convo'},
+ {number:'03',name:'Veyra',slug:'veyra',type:'Project management',tagline:'Make the work easier to see.',description:'A project workspace for the messy middle of getting things done. Tasks, dashboards, client views and a spatial Pulse experience share the same place.',live:'https://veyra-saas-ai.vercel.app/',tone:'veyra'},
+ {number:'04',name:'Savora',slug:'savora',type:'Restaurant bookings',tagline:'A table should never be booked twice.',description:'A restaurant website with a considered guest experience and database rules that protect the reservation system when things get busy.',live:'https://savora-booking-engine.vercel.app/',tone:'savora'}
+] as const;
 
-function LineLabel({index,children}:{index:string;children:React.ReactNode}){
- return <div className="rd-section-line"><span>{index}</span><span>{children}</span></div>;
+function FeatureLink({slug,live}:{slug:string;live:string}){
+ return <div className="art-feature-actions"><Link href={'/work/'+slug} className="art-case-link">Explore the build <ArrowUpRight size={19}/></Link><a href={live} target="_blank" rel="noopener noreferrer" className="art-website-link">Visit website <ExternalLink size={16}/></a></div>;
 }
-function ProjectAction({slug}:{slug:string}){
- return <Link className="rd-project-action" href={'/work/'+slug} aria-label={'Explore '+(projects.find(project=>project.slug===slug)?.name||'project')+' case study'}><ArrowUpRight size={25}/></Link>;
-}
-function ConvoArtwork(){
- return <div className="rd-convo-artwork" aria-label="Illustrative ConvoTools interface with a file converting from PDF to DOCX">
-  <div className="rd-convo-window">
-   <div className="rd-convo-window-top"><span className="rd-convo-mark">C<span>.</span></span><span>THE FILE DESK</span><span>WORKSPACE / 001</span></div>
-   <div className="rd-convo-hello"><small>THE DIGITAL FILE DESK</small><strong>Every file has<br/>a next step.</strong></div>
-   <div className="rd-convo-documents">
-    <div className="rd-convo-file rd-convo-file--from"><span>01 / SOURCE</span><strong>.pdf</strong><small>project-brief.pdf</small></div>
-    <div className="rd-convo-convert"><ArrowRight size={27}/><span>CONVERT</span></div>
-    <div className="rd-convo-file rd-convo-file--to"><span>02 / OUTPUT</span><strong>.docx</strong><small>project-brief.docx</small></div>
-   </div>
-   <div className="rd-convo-toolbar"><span>PDF TO WORD</span><span>IMAGE TO WEBP</span><span>MERGE FILES</span><span>+ MORE</span></div>
+function FeaturedWork(){
+ return <div className="art-features">
+  {source.slice(0,2).map((project,index)=><article className={'art-feature-large art-feature-'+project.tone} key={project.slug}>
+   <div className="art-feature-words"><div className="art-feature-meta"><span>{project.number} of 04</span><span>{project.type}</span></div><div><p className="art-feature-thought">{project.tagline}</p><h3>{project.slug==='memeismine'?<>Meme Is<br/>Mine<span>.</span></>:<>Convo<br/>Tools<span>.</span></>}</h3><p className="art-feature-description">{project.description}</p></div><FeatureLink slug={project.slug} live={project.live}/></div>
+   <Link href={'/work/'+project.slug} className="art-feature-shot" aria-label={'Explore the '+project.name+' case study'}>
+    <div className="art-feature-browser"><div className="art-feature-chrome"><span><i/><i/><i/></span><small>{new URL(project.live).hostname}</small><ArrowUpRight size={15}/></div><img src={capture(project.slug)} alt={'Real screenshot of the '+project.name+' website'} width={1560} height={980} loading="lazy" decoding="async"/></div>
+    <div className="art-feature-mobile"><img src={capture(project.slug,'mobile')} alt={'Mobile capture of the '+project.name+' website'} width={420} height={912} loading="lazy" decoding="async"/></div>
+    <span className="art-feature-shot-caption">{index===0?'A look inside the meme studio':'The ConvoTools file desk, as it is today'}</span>
+   </Link>
+  </article>)}
+  <div className="art-feature-duo">
+   {source.slice(2).map(project=><article className={'art-feature-small art-feature-'+project.tone} key={project.slug}>
+    <Link href={'/work/'+project.slug} className="art-small-photo" aria-label={'View '+project.name+' case study'}>
+     <img src={capture(project.slug)} alt={'Screenshot of the deployed '+project.name+' website'} width={1560} height={980} loading="lazy" decoding="async"/>
+     <span className="art-small-open">View case study <ArrowUpRight size={18}/></span>
+    </Link>
+    <div className="art-small-bottom"><div><p className="art-small-number">{project.number} / {project.type}</p><h3>{project.name}</h3><p>{project.tagline}</p></div><Link href={'/work/'+project.slug} aria-label={'Explore '+project.name}><ArrowUpRight size={25}/></Link></div>
+   </article>)}
   </div>
-  <span className="rd-art-note">INTERFACE-INSPIRED COMPOSITION / NOT A SCREENSHOT</span>
  </div>;
 }
+
 export default function EditorialPortfolio(){
- return <div className="redesign">
+ return <div className="redesign editorial-v2">
   <RedesignNavigation/>
   <main id="main">
-   <section className="rd-hero" aria-labelledby="rd-hero-title">
-    <div className="rd-hero-grid" aria-hidden="true"/>
-    <div className="rd-hero-intro"><span><span className="rd-star">✳</span> PORTFOLIO / EDITION 2026</span><span>BHAVNAGAR, INDIA — BUILDING FROM EVERYWHERE</span></div>
-    <div className="rd-hero-head">
-     <div className="rd-hero-kicker">HELLO, I'M RAJ — DEVELOPER &amp; CREATIVE TECHNOLOGIST</div>
-     <h1 id="rd-hero-title">MAKING<br/><span>THE WEB</span><br/><em>FEEL</em> ALIVE<span className="rd-period">.</span></h1>
-     <p>Thoughtful digital products. Uncommon interfaces. Engineering that holds up beyond the first impression.</p>
+   <section className="art-hero" aria-labelledby="art-hero-title">
+    <div className="art-hero-grain" aria-hidden="true"/>
+    <div className="art-hero-inner">
+     <div className="art-hero-copy">
+      <p className="art-hero-hello"><span aria-hidden="true">✳</span> Hi, I'm Raj. I make things for the web.</p>
+      <h1 id="art-hero-title">Some ideas<br/>don't leave<br/><em>me alone.</em></h1>
+      <p className="art-hero-after">So I build them.</p>
+      <p className="art-hero-bio">A meme studio. A file toolbox. A place to plan projects. I'm a developer who cares just as much about how something feels as how it works.</p>
+      <div className="art-hero-ctas"><a href="#work" className="art-primary-link">See what I've made <ArrowDown size={18}/></a><a href="#about" className="art-secondary-link">Meet the maker <ArrowUpRight size={18}/></a></div>
+     </div>
+     <div className="art-hero-stage"><LivePreview/></div>
     </div>
-    <div className="rd-hero-workstation"><Workstation/></div>
-    <div className="rd-hero-footer">
-     <div><span className="rd-star">✳</span> AN INDEPENDENT PRACTICE IN CODE, DESIGN &amp; CURIOSITY</div>
-     <a href="#work" className="rd-scroll-link"><span>EXPLORE SELECTED WORK</span><span className="rd-scroll-arrow"><ArrowDown size={24}/></span></a>
-     <div className="rd-hero-count">01 / INTRODUCTION</div>
-    </div>
+    <div className="art-hero-bottom"><span>RAJ SUHANDANI <span aria-hidden="true">✳</span> BHAVNAGAR, INDIA</span><span>Scroll a little. There is more than one kind of project here.</span><a href="#work">Keep going <ArrowDown size={16}/></a></div>
    </section>
 
-   <section className="rd-ticker" aria-label="Capabilities"><div>CODE <span>✳</span> DESIGN <span>✳</span> CREATIVE TECHNOLOGY <span>✳</span> REAL PRODUCTS <span>✳</span> CODE <span>✳</span> DESIGN <span>✳</span> CREATIVE TECHNOLOGY <span>✳</span> REAL PRODUCTS <span>✳</span></div></section>
-
-   <section id="work" className="rd-work" aria-labelledby="rd-work-title">
-    <LineLabel index="01 / SELECTED PROJECTS">BUILT TO BE USED, NOT JUST SEEN</LineLabel>
-    <div className="rd-work-heading"><h2 id="rd-work-title">THE WORK<br/><em>IS THE POINT.</em></h2><p>Products built across creative tools, utility workflows and full-stack systems. A selection of the things I care about getting right.</p></div>
-
-    <article className="rd-feature rd-feature-meme">
-     <div className="rd-feature-copy">
-      <span className="rd-feature-index">001 / FEATURED PROJECT <span>CREATIVE TOOLS — 2026</span></span>
-      <div><span className="rd-feature-kicker">FOR THE CULTURE, AND THE GROUP CHAT.</span><h3>MEME<br/>IS MINE<span>.</span></h3><p>A free browser-based studio to find the format, make the joke and share it. Real image and video editing, without the complicated creative workflow.</p></div>
-      <div className="rd-feature-foot"><div><span>IMAGE + VIDEO EDITORS</span><span>NEXT.JS / APPWRITE</span></div><ProjectAction slug="memeismine"/></div>
-     </div>
-     <Link href="/work/memeismine" className="rd-feature-visual rd-meme-visual" aria-label="View Meme Is Mine case study">
-      <div className="rd-meme-edition"><span>THE INTERNET IS YOUR CANVAS</span><span>MAKE SOME NOISE / 001</span></div>
-      <div className="rd-meme-image-frame"><img src={memeEditor} alt="Actual Meme Is Mine editing workspace screenshot" loading="lazy" decoding="async"/></div>
-      <span className="rd-meme-caption">THE WORKSHOP / ACTUAL PRODUCT INTERFACE</span>
-     </Link>
-    </article>
-
-    <article className="rd-feature rd-feature-convo">
-     <div className="rd-feature-copy">
-      <span className="rd-feature-index">002 / FEATURED PROJECT <span>PRODUCTIVITY — 2026</span></span>
-      <div><span className="rd-feature-kicker">A BETTER WAY TO GET THE LITTLE THINGS DONE.</span><h3>CONVO<br/>TOOLS<span>.</span></h3><p>A browser-first workspace for everyday file tasks — from PDFs and images to documents, spreadsheets and developer utilities.</p></div>
-      <div className="rd-feature-foot"><div><span>42 TOOL ENTRIES / 10 CATEGORIES</span><span>PROCESSING IN THE BROWSER</span></div><ProjectAction slug="convotools"/></div>
-     </div>
-     <Link href="/work/convotools" className="rd-feature-visual" aria-label="View ConvoTools case study"><ConvoArtwork/></Link>
-    </article>
-
-    <div className="rd-project-duo">
-     <article className="rd-project-card rd-project-veyra">
-      <Link href="/work/veyra" className="rd-duo-image" aria-label="Explore Veyra case study"><img src={veyraScreen} alt="Veyra project workspace dashboard from the project repository" loading="lazy" decoding="async"/><span className="rd-view-project">VIEW PROJECT <ArrowUpRight size={20}/></span></Link>
-      <div className="rd-duo-meta"><span>003 / PRODUCTIVITY × 3D</span><span>2026</span></div><div className="rd-duo-title"><div><h3>Veyra<span>.</span></h3><p>Project planning with a spatial pulse.</p></div><ProjectAction slug="veyra"/></div>
-     </article>
-     <article className="rd-project-card rd-project-savora">
-      <Link href="/work/savora" className="rd-duo-image" aria-label="Explore Savora case study"><img src={savoraScreen} alt="Savora restaurant booking website screenshot from the project repository" loading="lazy" decoding="async"/><span className="rd-view-project">VIEW PROJECT <ArrowUpRight size={20}/></span></Link>
-      <div className="rd-duo-meta"><span>004 / FULL-STACK SYSTEMS</span><span>2026</span></div><div className="rd-duo-title"><div><h3>Savora<span>.</span></h3><p>Reservations built on reliable data.</p></div><ProjectAction slug="savora"/></div>
-     </article>
+   <section className="art-work" id="work" aria-labelledby="art-work-title">
+    <div className="art-section-head">
+     <p className="art-eyebrow art-eyebrow-dark">Selected work</p>
+     <div className="art-work-intro"><h2 id="art-work-title">The stuff<br/><em>I've made.</em></h2><p>Some things started as small annoyances. Some started as curiosity. What they have in common is that you can actually open them.</p></div>
     </div>
+    <FeaturedWork/>
     <ProjectArchive/>
    </section>
 
-   <section className="rd-manifesto" aria-label="Design philosophy">
-    <div className="rd-manifesto-head"><span>AN OBSERVATION / 002</span><span>THE DETAILS MAKE THE DIFFERENCE</span></div>
-    <div className="rd-manifesto-text">GOOD DESIGN<br/>GETS NOTICED.<br/><em>GOOD ENGINEERING</em><br/>GETS USED.</div>
-    <div className="rd-manifesto-bottom"><span>FORM MEETS FUNCTION.</span><span>EVERY TIME. ↗</span></div>
+   <section className="art-note" aria-label="A note about the work">
+    <div className="art-note-top"><span>A note from the maker</span><span>Made to be used</span></div>
+    <p>Sometimes the most interesting part of an idea is the part that makes you ask <em>“could this actually work?”</em></p>
+    <div className="art-note-bottom"><span>Then you open the editor.</span><span>And find out.</span></div>
    </section>
 
-   <section id="approach" className="rd-approach">
-    <LineLabel index="02 / THE PRACTICE">HOW I THINK ABOUT BUILDING</LineLabel>
-    <div className="rd-approach-intro"><h2>MADE WITH<br/><em>INTENTION.</em></h2><p>The best work is rarely about a clever trick. It's a series of good decisions, made carefully, from the first sketch to the last edge case.</p></div>
-    <div className="rd-approach-list">
-     <div><span>01</span><h3>Understand the real problem.</h3><p>Start with the person using the product, not a list of trendy components.</p><ArrowUpRight size={23}/></div>
-     <div><span>02</span><h3>Make every detail earn its place.</h3><p>Typography, interaction, information and motion should all communicate something.</p><ArrowUpRight size={23}/></div>
-     <div><span>03</span><h3>Build beyond the happy path.</h3><p>Good interfaces need dependable systems, accessible flows and honest edge-case handling.</p><ArrowUpRight size={23}/></div>
+   <section className="art-thinking" id="approach" aria-labelledby="art-thinking-title">
+    <p className="art-eyebrow art-eyebrow-dark">What I've learned by building</p>
+    <div className="art-thinking-intro"><h2 id="art-thinking-title">Pretty isn't<br/><em>the whole point.</em></h2><p>A good-looking screen might get your attention. The decisions underneath are what make a product worth returning to.</p></div>
+    <div className="art-thinking-list">
+     <article><span className="art-thinking-n">01</span><div><h3>Let people get to the fun part.</h3><p>In Meme Is Mine, trying a caption on the homepage opens the same text in the real editor. The demo and the product belong together.</p><Link href="/work/memeismine">The meme studio <ArrowUpRight size={17}/></Link></div></article>
+     <article><span className="art-thinking-n">02</span><div><h3>Make the right thing happen twice.</h3><p>For Savora, a beautiful reservation form is only half the job. PostgreSQL makes sure two people cannot claim the same table at the same time.</p><Link href="/work/savora">Inside the booking system <ArrowUpRight size={17}/></Link></div></article>
+     <article><span className="art-thinking-n">03</span><div><h3>Don't make everyone carry every tool.</h3><p>ConvoTools keeps heavier browser engines out of the initial load. You should not need a video processor just to resize a JPG.</p><Link href="/work/convotools">How the file desk works <ArrowUpRight size={17}/></Link></div></article>
     </div>
    </section>
 
-   <section id="about" className="rd-about">
-    <LineLabel index="03 / BEHIND THE WORK">A LITTLE HUMAN CONTEXT</LineLabel>
-    <div className="rd-about-layout">
-     <div className="rd-about-photo"><img src="/raj-suhandani-portrait.webp" alt="Portrait of Raj Manish Suhandani" loading="lazy" decoding="async" width="800" height="1000"/><span>RAJ / BHAVNAGAR, GUJARAT</span></div>
-     <div className="rd-about-copy"><span className="rd-micro">HELLO AGAIN / I'M RAJ.</span><h2>PART ENGINEER.<br/>PART <em>MAKER.</em><br/>ALL CURIOUS.</h2><p>I'm Raj Manish Suhandani, a developer interested in the point where reliable software and thoughtful visual experiences meet.</p><p>My practice spans full-stack development, interaction design and creative technology. I like taking ambitious ideas seriously — understanding the details, refining the edges and making things that feel natural to use.</p><div className="rd-about-availability"><span className="rd-status-light"/> BASED IN BHAVNAGAR, INDIA <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">FIND ME ON LINKEDIN <ArrowUpRight size={16}/></a></div></div>
+   <section id="about" className="art-about" aria-labelledby="art-about-title">
+    <div className="art-about-layout">
+     <div className="art-about-photo"><img src="/raj-suhandani-portrait.webp" width={800} height={1000} alt="Portrait of Raj Suhandani" loading="lazy" decoding="async"/><span>Behind the keyboard</span></div>
+     <div className="art-about-content">
+      <p className="art-eyebrow art-eyebrow-dark">A little about me</p>
+      <h2 id="art-about-title">Curious by<br/><em>default.</em></h2>
+      <p>I'm Raj, a developer from Bhavnagar, India. I spend a lot of time wondering how the internet could feel a little better, then figuring out what it would take to make that happen.</p>
+      <p>Code is my way of building things. Design is how I make them feel like they belong in someone's day. The interesting work happens when both are taken seriously.</p>
+      <div className="art-about-links"><a href={profile.github} target="_blank" rel="noopener noreferrer"><Github size={17}/> GitHub <ArrowUpRight size={15}/></a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={17}/> LinkedIn <ArrowUpRight size={15}/></a><Link href="/resume"><Download size={17}/> Resume <ArrowUpRight size={15}/></Link></div>
+     </div>
     </div>
    </section>
 
-   <section id="experience" className="rd-experience">
-    <LineLabel index="04 / EXPERIENCE & EDUCATION">THE PATH SO FAR</LineLabel>
-    <div className="rd-experience-top"><h2>ALWAYS<br/><em>LEARNING.</em></h2><p>Professional experience, academic foundations and a steady habit of turning ideas into working products.</p></div>
-    <div className="rd-career">
-     {experience.map((item,index)=><div className="rd-career-row" key={item.company}><span className="rd-career-date">{item.date}</span><div><span className="rd-career-company">{item.company}</span><h3>{item.title}</h3><p>{item.description}</p></div><span className="rd-career-index">0{index+1}</span></div>)}
-     <div className="rd-career-row"><span className="rd-career-date">2023 — 2027</span><div><span className="rd-career-company">GOVERNMENT ENGINEERING COLLEGE, BHAVNAGAR</span><h3>BE, Information &amp; Communication Technology</h3><p>Gujarat Technological University · CGPA 8.04/10. Exploring the foundations of software engineering, data structures and digital systems.</p></div><span className="rd-career-index">03</span></div>
+   <section className="art-experience" id="experience" aria-labelledby="art-exp-title">
+    <div className="art-experience-top"><p className="art-eyebrow art-eyebrow-dark">Along the way</p><h2 id="art-exp-title">Learning in public.<br/><em>Building for real.</em></h2></div>
+    <div className="art-experience-lines">
+     {experience.map((item,i)=><article key={item.company}><span className="art-experience-no">0{i+1}</span><div><h3>{item.title}</h3><p>{item.company}</p><p>{item.description}</p></div><span className="art-experience-date">{item.date}</span></article>)}
     </div>
-    <Link href="/resume" className="rd-resume-link"><span>THE EXPERIENCE, IN ONE PLACE.</span><strong>VIEW MY RESUME</strong><Download size={24}/></Link>
+    <Link href="/resume" className="art-resume-out">The longer version is in my resume. <span>Read it <ArrowUpRight size={18}/></span></Link>
    </section>
 
-   <section id="contact" className="rd-contact">
-    <LineLabel index="05 / START A CONVERSATION">THE NEXT CHAPTER IS OPEN</LineLabel>
-    <span className="rd-contact-pre">HAVE AN IDEA, A PROBLEM OR SOMETHING AMBITIOUS?</span>
-    <h2>LET'S MAKE<br/><em>SOMETHING</em><br/>MATTER<span>.</span></h2>
-    <div className="rd-contact-bottom"><p>Good conversations make good things happen. Reach out about a project, an opportunity or something worth exploring.</p><a href={'mailto:'+profile.email} className="rd-contact-button">GET IN TOUCH <ArrowUpRight size={25}/></a></div>
+   <section className="art-contact" id="contact" aria-labelledby="art-contact-title">
+    <div className="art-contact-top"><span>One more thing</span><span>There is always room for another good idea.</span></div>
+    <h2 id="art-contact-title">Got something<br/><em>worth making?</em></h2>
+    <div className="art-contact-rows"><p>Tell me what you're thinking. I read my messages, and I like meeting people who care about what they make.</p><a className="art-contact-email" href={'mailto:'+profile.email}>Let's talk <ArrowUpRight size={30}/></a></div>
    </section>
   </main>
-  <footer className="rd-footer"><div className="rd-footer-main"><a href="#main" className="rd-footer-brand">R<span>.</span>S✳</a><span>CRAFTED WITH INTENTION, IN INDIA.</span><a href="#main">BACK TO TOP ↑</a></div><div className="rd-footer-links"><a href={profile.github} target="_blank" rel="noopener noreferrer"><Github size={16}/> GITHUB</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer"><Linkedin size={16}/> LINKEDIN</a><a href={'mailto:'+profile.email}><Mail size={16}/> EMAIL</a><Link href="/resume">RESUME <ArrowUpRight size={16}/></Link><span>© 2026 RAJ SUHANDANI</span></div></footer>
+  <footer className="art-footer"><Link href="/" className="art-footer-name" aria-label="Back to top"><Signature/></Link><span>Made with code and unreasonable curiosity.</span><div><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={'mailto:'+profile.email}>Email</a><a href="#main">Back to top ↑</a></div><small>© {new Date().getFullYear()} Raj Suhandani</small></footer>
  </div>;
 }

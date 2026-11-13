@@ -13,7 +13,7 @@ export type ProjectStory = {
   deepDive:{number:string;title:string;description:string}[];
   decisions:{title:string;description:string}[];
   screenshots:ProjectShot[];
-  previewType:"repository"|"illustration";
+  previewType:"live"|"repository"|"illustration";
   previewNote:string;
 };
 const raw=(repo:string,file:string)=>`https://raw.githubusercontent.com/RAJ-SUHANDANI/${repo}/main/${file}`;
@@ -34,8 +34,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Honest local storage",description:"Drafts and collections live on the current device, while Appwrite provides accounts and account-associated template likes."},
       {title:"Resilient remote media",description:"Video previews use lazy loading and recovery logic, while exports report unsupported sources rather than pretending success."}
     ],
-    screenshots:[{src:"https://raw.githubusercontent.com/RAJ-SUHANDANI/MemeIsMine/main/public/editor-preview.jpg",alt:"Actual Meme Is Mine browser editing workspace captured for the project repository",label:"Inside the editor"}],
-    previewType:"repository",previewNote:"The editor image is an actual project-owned preview from the Meme Is Mine repository. Source video availability and exports vary by browser and media provider."
+    screenshots:[{src:"/project-captures/memeismine-desktop.webp",alt:"Real screenshot of the Meme Is Mine website on desktop",label:"Desktop homepage"},{src:"/project-captures/memeismine-mobile.webp",alt:"Real screenshot of the Meme Is Mine website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   convotools:{
     slug:"convotools",number:"02",tagline:"A better desk for the everyday file.",statement:"A WHOLE LOT OF USEFUL. ZERO TAB HOPPING.",scope:"Browser-first file utility platform",discipline:"Client-side processing and product architecture",
@@ -53,7 +52,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Load heavy engines on demand",description:"Browser conversion dependencies are deferred to reduce work required when first opening an ordinary tool page."},
       {title:"Verify actual file output",description:"The repository includes Playwright coverage for route navigation, mobile flows, and representative PDF and spreadsheet output correctness."}
     ],
-    screenshots:[],previewType:"illustration",previewNote:"The 3D laptop and portfolio artwork are labeled conceptual interface previews, not screenshots. Visit the live ConvoTools application to inspect its actual UI."
+    screenshots:[{src:"/project-captures/convotools-desktop.webp",alt:"Real screenshot of the ConvoTools website on desktop",label:"Desktop homepage"},{src:"/project-captures/convotools-mobile.webp",alt:"Real screenshot of the ConvoTools website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
 
   veyra:{
@@ -72,11 +71,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Local demo mode",description:"Visitors can explore the application without a backend account or API key."},
       {title:"Structured state",description:"Workspace selection and dashboards share context so the interface stays consistent."}
     ],
-    screenshots:[
-      {src:raw("Veyra","screenshots/01-home-hero.png"),alt:"Veyra landing page screenshot from the project repository",label:"The introduction"},
-      {src:raw("Veyra","screenshots/03-dashboard-overview.png"),alt:"Veyra workspace dashboard screenshot",label:"The workspace"},
-      {src:raw("Veyra","screenshots/05-pulse.png"),alt:"Veyra 3D Pulse feature screenshot",label:"The Pulse"}
-    ],previewType:"repository",previewNote:"Interface screenshots sourced from the Veyra GitHub repository."
+    screenshots:[{src:"/project-captures/veyra-desktop.webp",alt:"Real screenshot of the Veyra website on desktop",label:"Desktop homepage"},{src:"/project-captures/veyra-mobile.webp",alt:"Real screenshot of the Veyra website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   savora:{
     slug:"savora",number:"04",tagline:"Reservations, without the guesswork.",statement:"GOOD HOSPITALITY STARTS WITH A RELIABLE SYSTEM.",scope:"Restaurant booking platform",discipline:"Full stack and database design",
@@ -94,11 +89,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Demo without setup",description:"The documentation describes a seeded demo with PostgreSQL running inside the process."},
       {title:"Distinct account roles",description:"Customer and staff flows are separated so each type of user sees relevant actions."}
     ],
-    screenshots:[
-      {src:raw("Savora","docs/screenshots/01-home-desktop.jpg"),alt:"Savora restaurant homepage screenshot from GitHub",label:"The restaurant"},
-      {src:raw("Savora","docs/screenshots/03-menu-desktop.jpg"),alt:"Savora menu desktop screenshot",label:"The menu"},
-      {src:raw("Savora","docs/screenshots/05-reserve-desktop.jpg"),alt:"Savora reservation workflow screenshot",label:"The reservation"}
-    ],previewType:"repository",previewNote:"Interface screenshots sourced from the Savora GitHub repository."
+    screenshots:[{src:"/project-captures/savora-desktop.webp",alt:"Real screenshot of the Savora website on desktop",label:"Desktop homepage"},{src:"/project-captures/savora-mobile.webp",alt:"Real screenshot of the Savora website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   pulsefit:{
     slug:"pulsefit",number:"05",tagline:"Consistency made visible.",statement:"TRAIN WITH DATA. IMPROVE WITH INTENTION.",scope:"Fitness tracking dashboard",discipline:"Analytics and frontend engineering",
@@ -116,7 +107,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"One connected dashboard",description:"Workouts, recovery, goals and achievements belong together in the product navigation."},
       {title:"Controlled animation",description:"GSAP and Motion enhance state transitions without replacing the underlying data views."}
     ],
-    screenshots:[],previewType:"illustration",previewNote:"The laptop contains an illustrative interface based on documented features. Visit the live app to see the actual UI."
+    screenshots:[{src:"/project-captures/pulsefit-desktop.webp",alt:"Real screenshot of the PulseFit website on desktop",label:"Desktop homepage"},{src:"/project-captures/pulsefit-mobile.webp",alt:"Real screenshot of the PulseFit website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   vaultiq:{
     slug:"vaultiq",number:"06",tagline:"A clearer picture of money.",statement:"A FINANCIAL OVERVIEW THAT MAKES SENSE.",scope:"Personal finance application",discipline:"Data, dashboards and creative coding",
@@ -134,7 +125,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Useful visualization",description:"Financial charts make trends legible and the additional 3D elements stay secondary."},
       {title:"Responsive structure",description:"Dashboard cards and analytics remain accessible across screen sizes."}
     ],
-    screenshots:[],previewType:"illustration",previewNote:"The laptop contains an illustrative interface based on documented features. Visit the live app to see the actual UI."
+    screenshots:[{src:"/project-captures/vaultiq-desktop.webp",alt:"Real screenshot of the VaultIQ website on desktop",label:"Desktop homepage"},{src:"/project-captures/vaultiq-mobile.webp",alt:"Real screenshot of the VaultIQ website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   gymspot:{
     slug:"gymspot",number:"07",tagline:"Find a place to train.",statement:"DISCOVERY SHOULD FEEL EFFORTLESS.",scope:"Gym discovery platform",discipline:"Marketplace interfaces and React",
@@ -152,7 +143,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"React application structure",description:"React, TypeScript, Vite and Supabase form the documented application stack."},
       {title:"Responsive discovery",description:"The experience is designed for smaller screens as well as desktops."}
     ],
-    screenshots:[],previewType:"illustration",previewNote:"The laptop contains an illustrative interface based on documented features. Visit the live app to see the actual UI."
+    screenshots:[{src:"/project-captures/gymspot-desktop.webp",alt:"Real screenshot of the GymSpot website on desktop",label:"Desktop homepage"},{src:"/project-captures/gymspot-mobile.webp",alt:"Real screenshot of the GymSpot website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   studynotion:{
     slug:"studynotion",number:"08",tagline:"Learning, with room to explore.",statement:"A MORE INTERACTIVE WAY TO LEARN.",scope:"Learning management frontend",discipline:"React state and 3D motion",
@@ -170,10 +161,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Predictable shared state",description:"Redux Toolkit keeps enrollment and cart behavior coordinated across the interface."},
       {title:"Motion that supports learning",description:"Interactive effects enhance the product while leaving the learning tasks easy to use."}
     ],
-    screenshots:[
-      {src:raw("StudyNotion","images/mainpage.png"),alt:"StudyNotion main application screenshot from the repository",label:"The learning interface"},
-      {src:raw("StudyNotion","images/architecture.png"),alt:"StudyNotion architecture diagram from the repository",label:"The structure"}
-    ],previewType:"repository",previewNote:"Interface screenshot and architecture diagram sourced from the StudyNotion GitHub repository."
+    screenshots:[{src:"/project-captures/studynotion-desktop.webp",alt:"Real screenshot of the StudyNotion website on desktop",label:"Desktop homepage"},{src:"/project-captures/studynotion-mobile.webp",alt:"Real screenshot of the StudyNotion website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
   },
   auditai:{
     slug:"auditai",number:"09",tagline:"Better interfaces through better feedback.",statement:"TURN SCREENSHOTS INTO ACTIONABLE DESIGN INSIGHTS.",scope:"AI interface analysis platform",discipline:"UX auditing and accessibility",
@@ -191,8 +179,7 @@ export const projectStories:Record<string,ProjectStory>={
       {title:"Structured analysis",description:"The audit uses a typed JSON response schema for ratings, issue details and recommendations."},
       {title:"Actionable presentation",description:"Annotations and grouped scores make it easier to connect suggestions to parts of the original interface."}
     ],
-    screenshots:[{src:"/project-previews/auditai-home.png",alt:"Screenshot of AuditAI live landing page at audit-ai-nine-beta.vercel.app",label:"The live website"}],
-    previewType:"repository",previewNote:"Actual live AuditAI homepage captured from the deployed website."
+    screenshots:[{src:"/project-captures/auditai-desktop.webp",alt:"Real screenshot of the AuditAI website on desktop",label:"Desktop homepage"},{src:"/project-captures/auditai-mobile.webp",alt:"Real screenshot of the AuditAI website on mobile",label:"Mobile homepage"}],previewType:"live",previewNote:"These are real screenshots captured from the deployed site on 13 November 2026. They show the public homepage; some features may require an account or demo access."
 
   }
 };

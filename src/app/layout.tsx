@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import './globals.css';
-import './redesign.css';
+import './editorial-v2.css';
+import './case-v2.css';
 
 export const metadata:Metadata={
  metadataBase:new URL('https://rajsuhandani.vercel.app'),
