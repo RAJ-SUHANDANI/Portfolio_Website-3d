@@ -136,7 +136,10 @@ for(const slug of slugs){
  if(slug==='memeismine'){
   await page.locator('.art-case-header-actions .art-theme-toggle').click();
   const sample=await page.locator('.pc-overview').evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
-  assert(contrast(sample.text,sample.bg)>=7,slug+' dark mode case study contrast is AAA');
+  const currentTheme=await page.locator('html').getAttribute('data-site-theme');
+  const ratio=contrast(sample.text,sample.bg);
+  await page.screenshot({path:path.join(output,'case-memeismine-dark.png'),fullPage:true,animations:'disabled'});
+  assert(ratio>=7,slug+' dark mode case study contrast is AAA: '+JSON.stringify({...sample,ratio,theme:currentTheme}));
   await page.locator('.art-case-header-actions .art-theme-toggle').click();
  }
  await checkImage(page,'.art-case-frame img',slug+' real desktop screenshot loads');
