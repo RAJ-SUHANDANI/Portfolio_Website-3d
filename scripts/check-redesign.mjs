@@ -69,6 +69,7 @@ for(const slug of slugs){
  await checkImage(page,'.art-case-frame img',slug+' real desktop screenshot loads');
  assert(await page.locator('.art-case-gallery figure').count()===2,slug+' two authentic screenshot captions');
  await page.getByRole('button',{name:'Phone',exact:false}).click();
+ await page.waitForFunction(()=>{const image=document.querySelector('.art-case-frame img');return image instanceof HTMLImageElement && image.complete && image.naturalWidth>0;},null,{timeout:15000});
  await checkImage(page,'.art-case-frame img',slug+' real mobile screenshot loads');
  const mobileSrc=await page.locator('.art-case-frame img').getAttribute('src');
  assert((mobileSrc||'').endsWith(slug+'-mobile.webp'),slug+' phone toggle updates source');
