@@ -1,144 +1,66 @@
-# Raj Suhandani | Interactive 3D Portfolio
+# The Proof Lab
 
-An original developer portfolio built to introduce my work, explain the thinking behind my projects, and make it easy to explore each application. The site combines editorial typography, an interactive 3D laptop, practical project case studies, and direct links to my work.
+**Raj Suhandani — interactive creative developer portfolio**
 
-**Developer:** Raj Manish Suhandani  
-**Location:** Bhavnagar, Gujarat, India  
-**LinkedIn:** https://www.linkedin.com/in/raj-suhandani-a4a393321  
-**GitHub:** https://github.com/RAJ-SUHANDANI
+This is the exploratory **award** branch of [Portfolio_Website-3d](https://github.com/RAJ-SUHANDANI/Portfolio_Website-3d). The production \`main\` branch is deliberately unchanged.
 
-## What you will find
+The goal is to make real engineering work feel tangible, through art direction and interactions that are useful, not just novel. Award recognition is an ambition, not a product claim.
 
-The homepage begins with a desktop 3D laptop that responds to interaction. It continues into an About section with my portrait, a technology skills section, selected projects, a searchable project archive, professional experience, a resume section, and links to my socials.
+## Experience
 
-The portfolio uses a consistent design system with graphite, porcelain and soft green accents. The 3D scene adds depth to the introduction without making the rest of the site harder to use.
+- **Homepage:** editorial typography and a procedural, pointer-responsive WebGL kinetic instrument with selectable Orbit, Align and Pulse states.
+- **Exhibition:** five featured projects with documented capabilities, actual repository screenshots where available, and clearly marked conceptual visuals where not.
+- **Case studies:** statically generated pages for ten projects with problem, approach, engineering decisions, stack, source links and live links when documented.
+- **Interactive studies:** a lightweight shape experiment and a clickable file-workflow diagram. ConvoTools' file diagram is an illustration, not a screenshot of the live app.
+- **About, résumé, and contact:** fast, direct, accessible routes with the supplied handwritten signature used throughout.
+- **Essential edition:** \`/classic\` is a useful non-WebGL index of every case study, rather than a coming-soon placeholder.
 
-### Main pages
+### Signature artwork
 
-| Route | Purpose |
-| --- | --- |
-| `/` | Interactive portfolio, biography, skills, projects, experience and contact links |
-| `/work/[slug]` | Dedicated pages explaining each project and linking to its live application and source code |
-| `/resume` | Resume summary with links to the downloadable PDF and plain text file |
-| `/classic` | Reserved for a future traditional portfolio |
+\`public/brand-signature.svg\` is a vector trace of the user-supplied transparent signature logo (not a substitute typeface). \`public/favicon.svg\` isolates the signature's handwritten **R** for clarity at small sizes. \`src/app/opengraph-image.tsx\` generates a branded social card as static build output.
 
-## Featured projects
+## Engineering
 
-Each project card opens a portfolio case study. The case study summarizes its purpose, implementation, technology stack and features, then provides a live application button and a GitHub source link where available. Links below come from the project repository documentation.
+Built on the existing dependency stack: Next.js 16, React 19, TypeScript, React Three Fiber, Three.js, Drei, Framer Motion and Lucide.
 
-| Project | What it does | Live application | Source |
-| --- | --- | --- | --- |
-| **Veyra** | Workspace management with task boards, analytics, client portals and a 3D Pulse visualization | [Open Veyra](https://veyra-saas-ai.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/Veyra) |
-| **Savora** | Restaurant reservations, menus, customer accounts, staff tools and database booking safeguards | [Open Savora](https://savora-booking-engine.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/Savora) |
-| **PulseFit** | Workout logs, progress charts, fitness goals and habit tracking | [Open PulseFit](https://pulsefit-fitness.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/PulseFit) |
-| **VaultIQ** | Expense tracking, budgeting, financial analytics and savings goals | [Open VaultIQ](https://vaultiq-eight.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/VaultIQ) |
-| **GymSpot** | Gym discovery with member, facility owner and administration views | [Open GymSpot](https://gymspot-omega.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/GymSpot) |
-| **StudyNotion** | Enhanced course discovery and enrollment with React, Redux, Three.js and GSAP | [Open StudyNotion](https://studynotion-psi-three.vercel.app) | [GitHub](https://github.com/RAJ-SUHANDANI/StudyNotion) |
-| **AuditAI** | Exploration of an AI assisted developer code review interface | No verified public demo | [GitHub](https://github.com/RAJ-SUHANDANI/AuditAI) |
+- \`src/components/AwardPortfolio.tsx\` — interactions, navigation, exhibition, visual experiments.
+- \`src/components/AwardArtifactScene.tsx\` — original 3D sculpture, reduced-GPU visibility behavior, WebGL fallback.
+- \`src/lib/awardContent.ts\` — case-study data and documented links.
+- \`src/app/award.css\` — responsive identity and all award-route styling.
+- \`src/app/work/[slug]/page.tsx\` — accessible server-rendered case study routes.
+- \`src/app/globals.css\` — minimal global CSS reset.
+- \`public/sitemap.xml\` and \`public/robots.txt\` — basic indexability.
 
-Project descriptions summarize the corresponding repositories. AuditAI currently has a default Next.js README and no documented deployment URL, so its page directs users to the source rather than inventing a link.
+The site is statically exported, so it does not need a running Next.js server. Heavy 3D is dynamically imported, limited on smaller devices, stopped while its hero is offscreen, and replaced with a CSS sculpture when WebGL or motion preferences require it. Navigation and project links work without WebGL. All controls have actual state.
 
-## Experience and education
+## Run and verify
 
-**Social Media Manager Intern at Ocavior:** Content planning, copywriting for LinkedIn, Instagram and Facebook, campaign ideas, and brand communication. The start month is not yet documented.
-
-**React Development Intern at InfoLabz IT Services Pvt. Ltd.:** Completed the summer internship from 3 to 17 July 2026 in Ahmedabad. Learned and applied JavaScript ES6, React and API integration, and created an application using API data.
-
-**Government Engineering College, Bhavnagar:** Bachelor of Engineering in Information and Communication Technology, 2023 to 2027, CGPA **8.04/10**.
-
-## Technology stack
-
-| Area | Libraries and tools |
-| --- | --- |
-| Application | Next.js 16, React 19, TypeScript |
-| 3D experience | Three.js, React Three Fiber, Drei |
-| Animation | Framer Motion and CSS transitions |
-| Icons | Lucide React |
-| Styling | Custom responsive CSS with a consistent design system |
-| Navigation | Next.js App Router, project routes and keyboard quick search |
-| Deployment | Static Next.js export compatible with static hosting |
-
-All code dependencies come from free and open source packages. No premium component subscription is required.
-
-## Performance and accessibility
-
-The site uses one procedural 3D laptop instead of a large downloaded model. Its WebGL experience loads separately from the main content. The 3D canvas uses demand based rendering and a limited device pixel ratio. On mobile devices, browsers without WebGL, or when reduced motion is preferred, the hero displays a static CSS workstation instead.
-
-The About portrait is an optimized WebP image. The design includes accessible link text, keyboard navigation, visible focus states, responsive layouts and reduced motion behavior.
-
-These design choices aim to keep the site responsive. Real performance must still be checked on the deployed site across devices and browsers.
-
-## Getting started
-
-You need **Node.js 22** and npm.
-
-```bash
-git clone https://github.com/RAJ-SUHANDANI/Portfolio_Website-3d.git
-cd Portfolio_Website-3d
+\`\`\`bash
 npm install
-npm run dev
-```
-
-Open **http://localhost:3000** to view the development server.
-
-### Quality checks
-
-```bash
 npm run typecheck
 npm run build
-```
+npm run dev
+\`\`\`
 
-The GitHub Actions workflow in `.github/workflows/quality.yml` runs the TypeScript check and production build when code is pushed to `main` or submitted in a pull request.
+The repository's pull-request workflow also verifies TypeScript and the production build. A successful build is **not** a claim that full real-device visual, accessibility or Core Web Vitals testing has been completed.
 
-## Deployment
+Recommended manual passes before merging:
 
-The project is configured for static export in `next.config.ts`. The production build creates an `out/` directory.
+1. 320 / 375 / 430 / 768 / 1024 / 1440 / 1920 px viewports, desktop Chrome and Safari/iOS.
+2. Keyboard navigation: skip link, index modal, Ctrl/Cmd+K search, links, Escape, tab order.
+3. Reduced motion, WebGL-disabled devices, low-power phones and scroll performance.
+4. Image source integrity and color contrast on all case studies.
+5. Real-user or lab Core Web Vitals and accessibility review with assistive technologies.
+6. Verify every live product link, repository attribution and content claim.
 
-```bash
-npm run build
-```
+## Featured work
 
-You can deploy the `out/` folder to Cloudflare Pages or another static hosting service. Hosting is independent from the six external project applications linked above. The portfolio repository does not automatically deploy those applications.
+- [Beyond Gravity](https://github.com/RAJ-SUHANDANI/Beyond_Gravity)
+- [Meme Is Mine](https://github.com/RAJ-SUHANDANI/MemeIsMine)
+- [ConvoTools](https://github.com/RAJ-SUHANDANI/ConvoTools)
+- [Savora](https://github.com/RAJ-SUHANDANI/Savora)
+- [Veyra](https://github.com/RAJ-SUHANDANI/Veyra)
 
-## Repository guide
+The implementation distinguishes documented behavior from measured outcomes. It does not invent visitors, customers, performance scores, endorsements, or revenue.
 
-```text
-public/
-  Raj-Suhandani-Resume.pdf       Generated downloadable resume
-  Raj-Suhandani-Resume.txt       ATS friendly plain text version
-  raj-suhandani-portrait.webp    Optimized personal portrait
-src/
-  app/
-    page.tsx                     Portfolio entry route
-    globals.css                  Layout, typography and responsive styling
-    resume/page.tsx              Resume route
-    work/[slug]/page.tsx         Individual project case studies
-    classic/page.tsx             Future classic portfolio
-  components/
-    Portfolio.tsx                Main page and interactions
-    Laptop3D.tsx                 Procedural 3D laptop
-  lib/
-    data.ts                      Projects, skills and experience
-resume-source/
-  Raj-Suhandani-Resume.tex     Editable resume with original styling
-.github/workflows/quality.yml    Website build checks
-.github/workflows/resume-pdf.yml Resume PDF compilation
-```
-
-## Updating content
-
-Project names, descriptions, highlights, tech stacks and live URLs are stored in `src/lib/data.ts`. Add or edit a project there and its case study will be generated through `/work/[slug]`.
-
-The resume source is `resume-source/Raj-Suhandani-Resume.tex`. Changes to this source trigger the GitHub Actions resume workflow, which compiles the PDF while retaining its Computer Modern typography and original section headings, then updates `public/Raj-Suhandani-Resume.pdf`. The plain text version remains at `public/Raj-Suhandani-Resume.txt`. Keep all resume variants and the website biography consistent.
-
-The About image is `public/raj-suhandani-portrait.webp`. Replace it with an optimized image of the same name to update the photograph without editing the component.
-
-## Design principles
-
-Good development work is easier to appreciate when the interface is clear. The portfolio aims to use 3D deliberately, present actual applications instead of invented examples, and let visitors reach the projects and resume without unnecessary animation.
-
-## Contact
-
-For opportunities, collaboration or feedback, connect through [LinkedIn](https://www.linkedin.com/in/raj-suhandani-a4a393321), browse [GitHub](https://github.com/RAJ-SUHANDANI), or email **rajsuhandani11@gmail.com**.
-
-© 2026 Raj Manish Suhandani.
+**Review the draft pull request before any merge into \`main\`.**
