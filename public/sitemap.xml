@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://rajsuhandani.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/resume</loc><changefreq>monthly</changefreq><priority>.4</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/classic</loc><changefreq>monthly</changefreq><priority>.4</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/beyond-gravity</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/memeismine</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/convotools</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/savora</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/veyra</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/pulsefit</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/vaultiq</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/gymspot</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/studynotion</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+  <url><loc>https://rajsuhandani.vercel.app/work/auditai</loc><changefreq>monthly</changefreq><priority>.8</priority></url>
+</urlset>
