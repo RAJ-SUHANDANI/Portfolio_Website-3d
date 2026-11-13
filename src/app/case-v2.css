@@ -1,0 +1,76 @@
+/* Case-study extension: real desktop and phone captures. */
+.project-case .art-pc-logo{width:175px;height:54px;display:block;letter-spacing:0}
+.project-case .art-pc-logo svg{width:100%;height:100%;display:block;color:#f6f7ed}
+.project-case .pc-hero{background:#1a231c;min-height:790px;column-gap:clamp(20px,3vw,60px)}
+.project-case .pc-hero:after{opacity:.45}
+.project-case .pc-hero-superline{color:#bfccbe}
+.project-case .pc-title-wrap h1{font-size:clamp(62px,6.6vw,126px);text-wrap:balance;overflow-wrap:anywhere}
+.project-case .pc-kicker{text-transform:none}
+.project-case .pc-hero-visual{padding:40px 5px 30px;align-self:center}
+.art-case-stage{min-width:0;width:100%;color:#f2f5ec}
+.art-case-stage-top,.art-case-stage-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;font:600 11px/1.45 'DM Sans',sans-serif;color:#b6c6b9}
+.art-case-stage-top{margin-bottom:22px}
+.art-case-stage-switch{display:flex;align-items:center;gap:5px}
+.art-case-stage-switch button{display:flex;align-items:center;gap:6px;border:1px solid #778c7666;color:#d1e1d2;background:transparent;padding:9px 11px;font:600 11px 'DM Sans',sans-serif}
+.art-case-stage-switch button[aria-pressed=true]{color:#1b261d;background:var(--case-accent);border-color:var(--case-accent)}
+.art-case-frame{position:relative;overflow:hidden;background:#ece9df;box-shadow:15px 35px 80px #0008;transition:width .3s,transform .3s;min-width:0;margin:0 auto;border:5px solid #d2d2c9}
+.art-case-frame-desktop{width:100%;aspect-ratio:1560/980;transform:perspective(1000px) rotateY(-5deg) rotateX(2deg)}
+.art-case-frame-mobile{width:min(55%,230px);aspect-ratio:420/912;border:8px solid #232d28;border-radius:19px}
+.art-case-frame-bar{height:30px;background:#e9ede5;color:#47564a;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 12px;font:9px 'Space Mono',monospace}
+.art-case-frame-bar>span:first-child{letter-spacing:2px;color:#909c8e}
+.art-case-frame>img{display:block;width:100%;height:calc(100% - 30px);object-fit:cover;object-position:top center}
+.art-case-frame-mobile .art-case-frame-bar{height:22px;font-size:6px;padding:0 5px}
+.art-case-frame-mobile>img{height:calc(100% - 22px)}
+.art-case-stage-bottom{margin-top:24px}
+.art-case-stage-bottom>a{display:flex;align-items:center;gap:9px;color:#f0f3ed!important;border-bottom:1px solid #a8b9a6;padding-bottom:7px}
+.project-case .pc-gallery-image,.project-case .pc-more-grid>a{border-radius:0}
+.art-case-gallery{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(250px,.75fr);gap:26px;align-items:start;margin-top:35px}
+.art-case-gallery figure{margin:0;min-width:0}
+.art-case-gallery-image{position:relative;display:block;width:100%;min-width:0;padding:20px;background:#dce1da;border:0;overflow:hidden}
+.art-case-gallery figure:first-child .art-case-gallery-image{background:#c1ccbd}
+.art-case-gallery figure:nth-child(2) .art-case-gallery-image{background:#b8c3ae}
+.art-case-gallery-image>img{display:block;margin:0 auto;width:100%;object-fit:cover;object-position:top;box-shadow:6px 14px 25px #26342329}
+.art-case-gallery figure:first-child img{aspect-ratio:1560/980}
+.art-case-gallery figure:nth-child(2) img{width:60%;aspect-ratio:420/912}
+.art-case-gallery-image>span{position:absolute;bottom:24px;right:24px;display:flex;align-items:center;gap:12px;background:#1e2a21;color:#f5f7f0;padding:14px 17px;font:600 12px 'DM Sans',sans-serif;transition:transform .2s}
+.art-case-gallery-image:hover>span{transform:translateY(-5px)}
+.art-case-gallery figcaption{margin-top:18px;font:600 13px 'DM Sans',sans-serif;color:#4e5f51}
+.art-case-lightbox{position:fixed;inset:0;width:min(95vw,1500px);height:min(94dvh,1080px);max-width:none;max-height:none;border:0;background:#17231c;color:#f5f7ef;padding:24px;overflow:auto}
+.art-case-lightbox::backdrop{background:#080e0bdc;backdrop-filter:blur(6px)}
+.art-case-lightbox-inside>div{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:18px;font:600 14px 'DM Sans',sans-serif}
+.art-case-lightbox-inside button{display:flex;align-items:center;gap:10px;border:1px solid #768b76;background:transparent;color:inherit;padding:11px 15px}
+.art-case-lightbox-inside>img{display:block;max-height:calc(94dvh - 105px);max-width:100%;width:auto;margin:0 auto;object-fit:contain}
+.art-case-next-image{aspect-ratio:1.5;overflow:hidden;margin-top:30px;background:#25372d}
+.art-case-next-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.project-case .pc-more-grid>a{min-height:0;padding:24px}
+.project-case .pc-more-grid>a>strong{margin-top:28px;font-size:clamp(37px,4.3vw,63px)}
+.project-case .pc-more-grid>a>p{max-width:560px}
+@media(max-width:1020px){
+ .project-case .pc-hero{min-height:750px}
+ .project-case .pc-hero-visual{padding:30px 0}
+ .art-case-stage-top{flex-direction:column;align-items:flex-start;gap:11px}
+ .art-case-gallery{grid-template-columns:minmax(0,1.25fr) minmax(220px,.75fr)}
+}
+@media(max-width:820px){
+ .project-case .pc-hero{grid-template-columns:1fr;gap:20px;padding-bottom:35px}
+ .project-case .pc-hero-visual{grid-column:1;grid-row:auto;padding:18px 0}
+ .art-case-frame-desktop{max-width:620px}
+ .art-case-stage-top{flex-direction:row;align-items:center}
+ .project-case .pc-title-wrap h1{font-size:clamp(53px,9vw,95px)}
+}
+@media(max-width:580px){
+ .project-case .art-pc-logo{width:135px;height:42px}
+ .art-case-stage-top,.art-case-stage-bottom{font-size:10px}
+ .art-case-stage-switch button{font-size:10px;padding:8px}
+ .art-case-gallery{grid-template-columns:1fr;gap:35px}
+ .art-case-gallery figure:nth-child(2) .art-case-gallery-image{min-height:460px}
+ .art-case-gallery figure:nth-child(2) img{height:440px;width:auto}
+ .art-case-gallery-image{padding:13px}
+ .art-case-gallery-image>span{bottom:15px;right:15px}
+ .art-case-frame-desktop{transform:none}
+ .art-case-lightbox{padding:14px;width:100vw;height:100dvh}
+}
+@media(prefers-reduced-motion:reduce){
+ .art-case-frame,.art-case-gallery-image>span{transition:none!important}
+ .art-case-frame-desktop{transform:none!important}
+}

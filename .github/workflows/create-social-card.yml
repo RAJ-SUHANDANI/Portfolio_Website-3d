@@ -1,0 +1,32 @@
+name: Generate authentic portfolio social preview
+on:
+  push:
+    branches: [redesign]
+    paths:
+      - scripts/create-social-card.mjs
+      - .github/workflows/create-social-card.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: redesign
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-save sharp --no-audit --no-fund
+      - run: node scripts/create-social-card.mjs
+      - name: Commit the composed image to redesign
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/social-card.jpg
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: compose share preview from real project screenshots"
+            git push origin HEAD:redesign
+          fi

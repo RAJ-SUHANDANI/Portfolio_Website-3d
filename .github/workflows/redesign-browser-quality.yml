@@ -1,0 +1,46 @@
+name: Redesign browser quality
+on:
+  push:
+    branches: [redesign]
+    paths:
+      - 'src/**'
+      - 'public/project-captures/**'
+      - 'scripts/check-redesign.mjs'
+      - 'scripts/check-scroll-motion.mjs'
+      - '.github/workflows/redesign-browser-quality.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm install --no-save playwright sharp --no-audit --no-fund
+      - run: npx playwright install --with-deps chromium
+      - run: npm run build
+      - name: Serve the static export
+        run: |
+          npx --yes serve@14 out --listen 3000 > /tmp/redesign-server.log 2>&1 &
+          for i in $(seq 1 45); do
+            if curl -fsS http://127.0.0.1:3000 >/dev/null; then exit 0; fi
+            sleep 2
+          done
+          cat /tmp/redesign-server.log
+          exit 1
+      - name: Verify 9 projects, interactions, real screenshots and responsive layout
+        run: node scripts/check-redesign.mjs
+      - name: Verify motion-enabled desktop, mobile and case-study scroll scenes
+        run: node scripts/check-scroll-motion.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: redesign-browser-review
+          path: .design-review/
+          retention-days: 14
+          include-hidden-files: true

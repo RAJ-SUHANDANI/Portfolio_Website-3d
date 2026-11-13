@@ -1,0 +1,211 @@
+/*
+ * SCROLL STORY — motion direction and reduced-motion safe choreography
+ *
+ * Custom to this portfolio. One IntersectionObserver marks actual visibility;
+ * continuous scroll is used only for a few quiet parallax accents.
+ * Nothing is hidden when JS is unavailable or reduced motion is requested.
+ */
+.art-scroll-progress{
+ position:fixed;top:0;left:0;right:0;height:3px;z-index:190;
+ pointer-events:none;transform-origin:0 50%;
+ background:#c7ef99;box-shadow:0 0 16px #c7ef9973;
+}
+html[data-site-theme="light"] .art-scroll-progress{background:#558347;box-shadow:0 0 13px #55834744}
+
+/* A shared language but intentionally distinct entrances for images, titles,
+   captions, rows and project cards. CSS translate doesn't override 3D hover. */
+html[data-scroll-motion="ready"] [data-motion]{
+ --motion-y:0px;
+ --motion-delay:0ms;
+ opacity:1;
+ translate:0 calc(var(--motion-y) + var(--scroll-drift, 0px));
+ filter:none;
+ clip-path:inset(0 0 0 0);
+ scale:1;
+ transition-property:opacity,translate,filter,clip-path,scale,transform;
+ transition-duration:.86s,.93s,.8s,.95s,.93s,.4s;
+ transition-timing-function:
+  cubic-bezier(.19,1,.22,1),
+  cubic-bezier(.17,.79,.2,1),
+  ease-out,
+  cubic-bezier(.19,1,.22,1),
+  cubic-bezier(.19,1,.22,1),
+  cubic-bezier(.19,1,.22,1);
+ transition-delay:
+  var(--motion-delay),
+  var(--motion-delay),
+  var(--motion-delay),
+  var(--motion-delay),
+  var(--motion-delay),
+  0ms;
+}
+html[data-scroll-motion="ready"] [data-motion-order="1"]{--motion-delay:75ms}
+html[data-scroll-motion="ready"] [data-motion-order="2"]{--motion-delay:150ms}
+html[data-scroll-motion="ready"] [data-motion-order="3"]{--motion-delay:225ms}
+html[data-scroll-motion="ready"] [data-motion-order="4"]{--motion-delay:300ms}
+html[data-scroll-motion="ready"] [data-motion-order="5"]{--motion-delay:370ms}
+
+/* The initial styles apply only to things that actually have not intersected. */
+html[data-scroll-motion="ready"] [data-motion]:not([data-motion-state="visible"]){
+ opacity:0;
+ --motion-y:37px;
+}
+html[data-scroll-motion="ready"] [data-motion="eyebrow"]:not([data-motion-state="visible"]){
+ --motion-y:17px;
+ letter-spacing:.13em;
+ filter:blur(2px);
+}
+html[data-scroll-motion="ready"] [data-motion="headline"]:not([data-motion-state="visible"]){
+ --motion-y:67px;
+ clip-path:inset(0 0 96% 0);
+ filter:blur(5px);
+}
+html[data-scroll-motion="ready"] [data-motion="statement"]:not([data-motion-state="visible"]){
+ --motion-y:78px;
+ clip-path:inset(0 0 95% 0);
+ filter:blur(6px);
+}
+html[data-scroll-motion="ready"] [data-motion="visual"]:not([data-motion-state="visible"]){
+ --motion-y:48px;
+ scale:.944;
+ clip-path:inset(6% 5% 8% 5% round 10px);
+ filter:blur(4px);
+}
+html[data-scroll-motion="ready"] [data-motion="portrait"]:not([data-motion-state="visible"]){
+ --motion-y:36px;
+ scale:.955;
+ clip-path:inset(0 0 17% 0);
+}
+html[data-scroll-motion="ready"] [data-motion="feature"]:not([data-motion-state="visible"]){
+ --motion-y:58px;
+ scale:.976;
+}
+html[data-scroll-motion="ready"] [data-motion="tile"]:not([data-motion-state="visible"]){
+ --motion-y:60px;
+ scale:.966;
+ filter:blur(3px);
+}
+html[data-scroll-motion="ready"] [data-motion="row"]:not([data-motion-state="visible"]){
+ --motion-y:31px;
+}
+html[data-scroll-motion="ready"] [data-motion="fade"]:not([data-motion-state="visible"]){
+ --motion-y:0px;
+}
+
+/* The motion of project imagery is independent from the hover transforms,
+   and does not crop a single pixel of the authentic captures. */
+html[data-scroll-motion="ready"] .art-feature-large [data-motion="visual"]{
+ transform-origin:center;
+}
+html[data-scroll-motion="ready"] .art-feature-large [data-motion="visual"][data-motion-state="visible"]{
+ filter:drop-shadow(0 9px 9px #00000010);
+}
+html[data-scroll-motion="ready"] .art-feature-large[data-motion-state="visible"]{
+ transition-duration:.88s,.93s,.8s,.9s,.92s,.4s;
+}
+
+/* The long editorial note gets a deliberate ink-on-paper arrival. */
+html[data-scroll-motion="ready"] .art-note [data-motion="statement"]{
+ transition-duration:1.15s,1.3s,1.05s,1.3s,1s,.4s;
+}
+
+/* Draw the separating rule as an editorial gesture, then reveal the row. */
+.art-thinking-list article[data-motion],.art-experience-lines article[data-motion]{
+ position:relative;
+}
+.art-thinking-list article[data-motion]::before,
+.art-experience-lines article[data-motion]::before{
+ content:'';
+ position:absolute;top:-1px;left:0;width:100%;height:1px;
+ background:currentColor;opacity:.32;
+ transform:scaleX(1);transform-origin:left center;
+ transition:transform .9s cubic-bezier(.17,.8,.2,1) .1s;
+ pointer-events:none;
+}
+html[data-scroll-motion="ready"] .art-thinking-list article[data-motion]:not([data-motion-state="visible"])::before,
+html[data-scroll-motion="ready"] .art-experience-lines article[data-motion]:not([data-motion-state="visible"])::before{
+ transform:scaleX(.02);
+}
+.art-tile[data-motion] .art-tile-visual,
+.art-feature-small[data-motion] .art-small-photo,
+.pc-more-grid>a[data-motion] .art-case-next-image{
+ transform-origin:center;
+ transition:box-shadow .45s cubic-bezier(.17,.8,.2,1);
+}
+.art-tile[data-motion-state="visible"] .art-tile-visual:hover,
+.art-feature-small[data-motion-state="visible"] .art-small-photo:hover{
+ box-shadow:0 22px 33px #0b170f27;
+}
+
+/* Case studies are stories too: chapters rise, images unfold, and typography
+   retains the existing subtle 3D tilt (translate is a separate CSS property). */
+.project-case .pc-section-index{position:relative}
+html[data-scroll-motion="ready"] .project-case [data-motion="headline"]{
+ transform-origin:left center;
+}
+html[data-scroll-motion="ready"] .project-case .pc-info-bar[data-motion="rise"]{
+ transition-duration:.65s,.75s,.65s,.75s,.75s,.4s;
+}
+html[data-scroll-motion="ready"] .project-case .pc-decision-grid article[data-motion]{
+ transition-duration:.65s,.7s,.65s,.7s,.7s,.4s;
+}
+
+/* All scroll-linked ambient motion is opt-in. Layout never shifts. */
+[data-scroll-parallax]{
+ translate:0 var(--scroll-drift,0px);
+}
+html[data-scroll-motion="ready"] [data-motion]:focus-within{
+ opacity:1;
+ --motion-y:0px;
+ filter:none;
+ clip-path:inset(0 0 0 0);
+ scale:1;
+}
+
+/* On touch devices the movement is shorter and faster, but still clearly
+   observable. No app-like horizontal hijacking or pinning. */
+@media(max-width:780px){
+ html[data-scroll-motion="ready"] [data-motion]{
+  transition-duration:.64s,.68s,.55s,.71s,.68s,.3s;
+ }
+ html[data-scroll-motion="ready"] [data-motion]:not([data-motion-state="visible"]){
+  --motion-y:24px;
+ }
+ html[data-scroll-motion="ready"] [data-motion="headline"]:not([data-motion-state="visible"]){
+  --motion-y:34px;
+  clip-path:inset(0 0 84% 0);
+  filter:blur(2px);
+ }
+ html[data-scroll-motion="ready"] [data-motion="statement"]:not([data-motion-state="visible"]){
+  --motion-y:38px;
+  clip-path:inset(0 0 87% 0);
+ }
+ html[data-scroll-motion="ready"] [data-motion="visual"]:not([data-motion-state="visible"]){
+  --motion-y:24px;
+  scale:.977;
+  clip-path:inset(3% 2% 4% 2% round 7px);
+  filter:none;
+ }
+ html[data-scroll-motion="ready"] [data-motion="feature"]:not([data-motion-state="visible"]),
+ html[data-scroll-motion="ready"] [data-motion="tile"]:not([data-motion-state="visible"]){
+  --motion-y:36px;
+  scale:.987;
+ }
+}
+
+/* Accessibility and minimal-motion preference are absolute guarantees. */
+@media(prefers-reduced-motion:reduce){
+ .art-scroll-progress{box-shadow:none}
+ html[data-scroll-motion="ready"] [data-motion],
+ html[data-scroll-motion="ready"] [data-motion]:not([data-motion-state="visible"]),
+ [data-scroll-parallax]{
+  opacity:1!important;
+  translate:none!important;
+  scale:1!important;
+  filter:none!important;
+  clip-path:inset(0 0 0 0)!important;
+  transition:none!important;
+ }
+ .art-thinking-list article::before,
+ .art-experience-lines article::before{transform:scaleX(1)!important;transition:none!important}
+}

@@ -1,0 +1,203 @@
+{
+  "createdAt": "2026-11-13T02:23:37.879Z",
+  "captures": [
+    {
+      "slug": "memeismine",
+      "kind": "desktop",
+      "url": "https://memeismine.vercel.app/",
+      "final": "memeismine-desktop.webp",
+      "title": "Meme Is Mine — Free Image & Video Meme Templates and Meme Maker",
+      "response": 200,
+      "bytes": 139008,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "memeismine",
+      "kind": "mobile",
+      "url": "https://memeismine.vercel.app/",
+      "final": "memeismine-mobile.webp",
+      "title": "Meme Is Mine — Free Image & Video Meme Templates and Meme Maker",
+      "response": 200,
+      "bytes": 74900,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "convotools",
+      "kind": "desktop",
+      "url": "https://convotool.vercel.app/",
+      "final": "convotools-desktop.webp",
+      "title": "ConvoTools — Online File Converter & PDF Tools",
+      "response": 200,
+      "bytes": 72978,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "convotools",
+      "kind": "mobile",
+      "url": "https://convotool.vercel.app/",
+      "final": "convotools-mobile.webp",
+      "title": "ConvoTools — Online File Converter & PDF Tools",
+      "response": 200,
+      "bytes": 62406,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "veyra",
+      "kind": "desktop",
+      "url": "https://veyra-saas-ai.vercel.app/",
+      "final": "veyra-desktop.webp",
+      "title": "Veyra – Intelligent Project Management",
+      "response": 200,
+      "bytes": 100086,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "veyra",
+      "kind": "mobile",
+      "url": "https://veyra-saas-ai.vercel.app/",
+      "final": "veyra-mobile.webp",
+      "title": "Veyra – Intelligent Project Management",
+      "response": 200,
+      "bytes": 76402,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "savora",
+      "kind": "desktop",
+      "url": "https://savora-booking-engine.vercel.app/",
+      "final": "savora-desktop.webp",
+      "title": "Savora — Seasonal Mediterranean cooking in the heart of the city",
+      "response": 200,
+      "bytes": 126878,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "savora",
+      "kind": "mobile",
+      "url": "https://savora-booking-engine.vercel.app/",
+      "final": "savora-mobile.webp",
+      "title": "Savora — Seasonal Mediterranean cooking in the heart of the city",
+      "response": 200,
+      "bytes": 73274,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "pulsefit",
+      "kind": "desktop",
+      "url": "https://pulsefit-fitness.vercel.app/",
+      "final": "pulsefit-desktop.webp",
+      "title": "PulseFit - Premium Fitness Tracking Platform",
+      "response": 200,
+      "bytes": 69906,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "pulsefit",
+      "kind": "mobile",
+      "url": "https://pulsefit-fitness.vercel.app/",
+      "final": "pulsefit-mobile.webp",
+      "title": "PulseFit - Premium Fitness Tracking Platform",
+      "response": 200,
+      "bytes": 62478,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "vaultiq",
+      "kind": "desktop",
+      "url": "https://vaultiq-eight.vercel.app/",
+      "final": "vaultiq-desktop.webp",
+      "title": "VaultIQ — Control Every Rupee. Master Every Decision.",
+      "response": 200,
+      "bytes": 73408,
+      "contentLength": 2202,
+      "ok": true
+    },
+    {
+      "slug": "vaultiq",
+      "kind": "mobile",
+      "url": "https://vaultiq-eight.vercel.app/",
+      "final": "vaultiq-mobile.webp",
+      "title": "VaultIQ — Control Every Rupee. Master Every Decision.",
+      "response": 200,
+      "bytes": 60600,
+      "contentLength": 2160,
+      "ok": true
+    },
+    {
+      "slug": "gymspot",
+      "kind": "desktop",
+      "url": "https://gymspot-omega.vercel.app/",
+      "final": "gymspot-desktop.webp",
+      "title": "GymSpot — Find & Book Your Perfect Gym",
+      "response": 200,
+      "bytes": 62898,
+      "contentLength": 1092,
+      "ok": true
+    },
+    {
+      "slug": "gymspot",
+      "kind": "mobile",
+      "url": "https://gymspot-omega.vercel.app/",
+      "final": "gymspot-mobile.webp",
+      "title": "GymSpot — Find & Book Your Perfect Gym",
+      "response": 200,
+      "bytes": 52158,
+      "contentLength": 1074,
+      "ok": true
+    },
+    {
+      "slug": "studynotion",
+      "kind": "desktop",
+      "url": "https://studynotion-psi-three.vercel.app/",
+      "final": "studynotion-desktop.webp",
+      "title": "Study Notion",
+      "response": 200,
+      "bytes": 108502,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "studynotion",
+      "kind": "mobile",
+      "url": "https://studynotion-psi-three.vercel.app/",
+      "final": "studynotion-mobile.webp",
+      "title": "Study Notion",
+      "response": 200,
+      "bytes": 82000,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "auditai",
+      "kind": "desktop",
+      "url": "https://audit-ai-nine-beta.vercel.app/",
+      "final": "auditai-desktop.webp",
+      "title": "AuditAI - AI-Powered UX & Conversion Optimization Auditor",
+      "response": 200,
+      "bytes": 86226,
+      "contentLength": 2500,
+      "ok": true
+    },
+    {
+      "slug": "auditai",
+      "kind": "mobile",
+      "url": "https://audit-ai-nine-beta.vercel.app/",
+      "final": "auditai-mobile.webp",
+      "title": "AuditAI - AI-Powered UX & Conversion Optimization Auditor",
+      "response": 200,
+      "bytes": 70054,
+      "contentLength": 2500,
+      "ok": true
+    }
+  ]
+}
