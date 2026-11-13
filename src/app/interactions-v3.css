@@ -10,13 +10,13 @@ html[data-site-theme="dark"] body{background:#111915}
 .art-magnetic:active{scale:.975}
 
 /* Subtle drifting constellations, not an opaque starfield on top of the interface. */
-.art-stars-field{--stars-x:0px;--stars-y:0px;position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:45;opacity:.22;mix-blend-mode:screen;color:#a9c79f;contain:strict}
-.art-stars-layer{position:absolute;inset:-2000px 0 0;transform:translate3d(var(--stars-x),var(--stars-y),0);transition:transform .55s cubic-bezier(.2,.8,.2,1);background-repeat:repeat;animation:art-star-drift 155s linear infinite;will-change:background-position}
+.art-stars-field{--stars-x:0px;--stars-y:0px;position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:45;opacity:.22;mix-blend-mode:screen;color:#a9c79f;contain:strict;transform:translate3d(var(--stars-x),var(--stars-y),0);transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.art-stars-layer{position:absolute;inset:-2000px 0 0;background-repeat:repeat;animation:art-star-drift 155s linear infinite;will-change:transform}
 .art-stars-tiny{background-image:radial-gradient(circle,currentColor 0 .65px,transparent 1px);background-size:121px 139px;opacity:.48}
 .art-stars-medium{background-image:radial-gradient(circle,currentColor 0 1px,transparent 1.35px);background-size:267px 301px;background-position:24px 41px;opacity:.38;animation-duration:240s}
 .art-stars-large{background-image:radial-gradient(circle,currentColor 0 1.35px,transparent 1.9px);background-size:433px 481px;background-position:96px 87px;opacity:.32;animation-duration:330s}
 .art-stars-field.is-paused .art-stars-layer{animation-play-state:paused}
-@keyframes art-star-drift{to{background-position-y:2000px}}
+@keyframes art-star-drift{to{transform:translate3d(0,2000px,0)}}
 html[data-site-theme="light"] .art-stars-field{mix-blend-mode:multiply;color:#5c8b5c;opacity:.18}
 html[data-site-theme="dark"] .art-stars-field{mix-blend-mode:screen;color:#c7ef99;opacity:.28}
 
@@ -177,3 +177,8 @@ html[data-site-theme="dark"] .project-case .art-case-gallery figcaption{color:#d
 @media(max-width:780px){.art-header .art-theme-label{display:none}.art-header .art-theme-toggle{min-width:43px;width:43px;padding:0}.art-header-right{gap:10px}.art-resume-tooltip{display:none}.art-about-links>.art-focus-socials{flex-basis:100%}.art-small-actions{gap:7px}.art-small-actions .art-like-button{min-width:51px;padding:7px 9px}.art-feature-actions{gap:12px}}
 @media(max-width:520px){.art-header .art-theme-toggle{min-width:40px;width:40px;height:42px}.art-like-hint{display:none}.art-tile-actions>a{width:41px;height:41px}.art-preloader-middle strong{font-size:clamp(67px,15vw,95px)}.art-preloader-top>span{display:none}.art-resume-out{align-items:center}.art-resume-out>span{font-size:13px}.art-resume-pill{font-size:12px;padding:11px 13px}.art-scroll-viewport{display:none}}
 @media(prefers-reduced-motion:reduce){.art-stars-layer{animation:none!important;transform:none!important;transition:none!important}.art-resume-pill,.art-resume-tooltip,.art-focus-socials a,.art-magnetic{transition:none!important}.art-magnetic:active{scale:1}.art-focus-socials a{filter:none!important;opacity:1!important}}
+
+/* Header hover preview opens below navigation, never outside the viewport. */
+.art-header .art-resume-tooltip{top:calc(100% + 16px);bottom:auto}
+.art-header .art-resume-hover:hover .art-resume-tooltip,.art-header .art-resume-hover:focus-within .art-resume-tooltip{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){.art-stars-field{transform:none!important;transition:none!important}}
