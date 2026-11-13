@@ -11,6 +11,12 @@ const browser=await chromium.launch({headless:true,args:['--disable-dev-shm-usag
 const results=[];
 const failures=[];
 const assert=(condition,message)=>{if(!condition)failures.push(message);results.push({pass:!!condition,message});};
+function contrast(foreground,background){
+ const parse=s=>{const m=s.match(/\d+(?:\.\d+)?/g);return m?m.slice(0,3).map(Number):[0,0,0]};
+ const lum=rgb=>rgb.map(v=>{const a=v/255;return a<=.04045?a/12.92:((a+.055)/1.055)**2.4;}).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);
+ const a=lum(parse(foreground)),b=lum(parse(background));
+ return (Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+}
 async function checkImage(page,selector,label){
  try{
   const okay=await page.locator(selector).first().evaluate(image=>image instanceof HTMLImageElement && image.complete && image.naturalWidth>0);
@@ -31,6 +37,12 @@ async function viewportTest(name,viewport){
  assert(await page.locator('html').getAttribute('data-site-theme')==='dark',name+' dark theme applies');
  const darkColor=await page.locator('.art-work').evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
  assert(darkColor.text!==darkColor.bg,name+' dark theme text readable');
+ assert(contrast(darkColor.text,darkColor.bg)>=7,name+' dark theme core contrast is AAA');
+ for(const selector of ['.art-work-intro>p','.art-archive-heading>p','.art-thinking-intro>p','.art-experience-top h2']){
+  const sample=await page.locator(selector).first().evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el.closest('section')||el.parentElement).backgroundColor}));
+  assert(contrast(sample.text,sample.bg)>=4.5,name+' dark theme contrast '+selector+': '+contrast(sample.text,sample.bg).toFixed(2));
+ }
+ if(name==='desktop')await page.screenshot({path:path.join(output,'home-dark-desktop.png'),fullPage:true,animations:'disabled'});
  await themeToggle.click();
  assert(await page.locator('html').getAttribute('data-site-theme')==='light',name+' light theme restores');
  assert(await page.locator('.art-wordmark svg path').count()===1,name+' actual vector signature visible');
@@ -55,6 +67,7 @@ async function viewportTest(name,viewport){
   await page.locator('#approach').scrollIntoViewIfNeeded();
   await page.waitForTimeout(700);
   assert(await page.locator('.art-scroll-chapter-name').innerText()==='The approach',name+' scroll phone follows current chapter');
+  await page.screenshot({path:path.join(output,'scroll-phone-desktop.png'),animations:'disabled'});
   await page.locator('#intro').scrollIntoViewIfNeeded();
  }
 
@@ -120,6 +133,12 @@ for(const slug of slugs){
  assert(await page.locator('.pc-hero h1').count()===1,slug+' case title renders');
  assert(await page.locator('.pc-title-wrap .art-like-button').count()===1,slug+' case has its own like button');
  assert(await page.locator('.art-case-header-actions .art-theme-toggle').count()===1,slug+' case theme control exists');
+ if(slug==='memeismine'){
+  await page.locator('.art-case-header-actions .art-theme-toggle').click();
+  const sample=await page.locator('.pc-overview').evaluate(el=>({text:getComputedStyle(el).color,bg:getComputedStyle(el).backgroundColor}));
+  assert(contrast(sample.text,sample.bg)>=7,slug+' dark mode case study contrast is AAA');
+  await page.locator('.art-case-header-actions .art-theme-toggle').click();
+ }
  await checkImage(page,'.art-case-frame img',slug+' real desktop screenshot loads');
  assert(await page.locator('.art-case-gallery figure').count()===2,slug+' two authentic screenshot captions');
  await page.getByRole('button',{name:'Phone',exact:false}).click();
