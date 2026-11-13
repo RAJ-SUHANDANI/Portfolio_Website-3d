@@ -1,0 +1,43 @@
+name: Capture authentic project screenshots
+on:
+  push:
+    branches: [redesign]
+    paths:
+      - scripts/capture-projects.mjs
+      - .github/workflows/capture-projects.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: redesign
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser capture dependencies
+        run: |
+          npm install --no-save playwright sharp --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Capture verified live pages
+        run: node scripts/capture-projects.mjs
+        continue-on-error: true
+      - name: Save captures and audit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/project-captures
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: capture authentic live project previews"
+            git push origin HEAD:redesign
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: portfolio-live-captures
+          path: public/project-captures
+          retention-days: 7
