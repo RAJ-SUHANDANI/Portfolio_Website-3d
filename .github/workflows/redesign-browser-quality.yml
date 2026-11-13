@@ -6,6 +6,7 @@ on:
       - 'src/**'
       - 'public/project-captures/**'
       - 'scripts/check-redesign.mjs'
+      - 'scripts/check-scroll-motion.mjs'
       - '.github/workflows/redesign-browser-quality.yml'
   workflow_dispatch:
 permissions:
@@ -34,6 +35,8 @@ jobs:
           exit 1
       - name: Verify 9 projects, interactions, real screenshots and responsive layout
         run: node scripts/check-redesign.mjs
+      - name: Verify motion-enabled desktop, mobile and case-study scroll scenes
+        run: node scripts/check-scroll-motion.mjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

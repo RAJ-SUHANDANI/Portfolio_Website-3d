@@ -33,13 +33,13 @@ export default function ProjectArchive(){
  const [filter,setFilter]=useState<(typeof filters)[number]>('Everything');
  const filtered=useMemo(()=>projects.filter(project=>filter==='Everything'||tags[project.slug]?.includes(filter)),[filter]);
  return <div className="art-archive" id="archive">
-  <div className="art-archive-heading"><div><p className="art-eyebrow art-eyebrow-dark">There's more.</p><h3>The rest of the<br/><em>rabbit holes.</em></h3></div><p>Not everything belongs in the same category. That is probably my favorite part.</p></div>
-  <div className="art-filter-bar" role="group" aria-label="Filter the project gallery">
+  <div className="art-archive-heading" data-motion="rise"><div><p className="art-eyebrow art-eyebrow-dark">There's more.</p><h3>The rest of the<br/><em>rabbit holes.</em></h3></div><p>Not everything belongs in the same category. That is probably my favorite part.</p></div>
+  <div data-motion="rise" data-motion-order="1" className="art-filter-bar" role="group" aria-label="Filter the project gallery">
    {filters.map(name=><button type="button" aria-pressed={filter===name} className={filter===name?'active':''} key={name} onClick={()=>setFilter(name)}>{name}</button>)}
   </div>
-  <p className="art-result-count" aria-live="polite">Showing {filtered.length} of {projects.length} projects</p>
+  <p data-motion="fade" className="art-result-count" aria-live="polite">Showing {filtered.length} of {projects.length} projects</p>
   <div className="art-gallery-grid">
-   {filtered.map((project,index)=><article key={project.slug} className={'art-tile art-tile-'+project.slug}>
+   {filtered.map((project,index)=><article key={project.slug} className={'art-tile art-tile-'+project.slug} data-motion="tile" data-motion-order={index%3+1}>
     <Link className="art-tile-visual" href={'/work/'+project.slug} aria-label={'Read about '+project.name}>
      <img className="art-tile-desktop" src={capture(project.slug)} alt={'Screenshot of the real '+project.name+' website'} width={1560} height={980} loading="lazy" decoding="async"/>
      <img className="art-tile-mobile" src={capture(project.slug,'mobile')} alt="" aria-hidden="true" width={420} height={912} loading="lazy" decoding="async"/>
