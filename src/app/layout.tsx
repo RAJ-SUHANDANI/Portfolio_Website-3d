@@ -3,11 +3,13 @@ import './globals.css';
 import './editorial-v2.css';
 import './case-v2.css';
 
+const siteOrigin=process.env.VERCEL_URL?`https://${process.env.VERCEL_URL}`:'https://rajsuhandani.vercel.app';
 export const metadata:Metadata={
- metadataBase:new URL('https://rajsuhandani.vercel.app'),
+ metadataBase:new URL(siteOrigin),
  title:{default:'Raj Suhandani — Developer & Creative Technologist',template:'%s | Raj Suhandani'},
  description:'Independent developer and creative technologist building thoughtful digital products, from browser-based creative tools to full-stack platforms and dimensional interfaces.',
- openGraph:{title:'Raj Suhandani — Developer & Creative Technologist',description:'Thoughtful digital products. Uncommon interfaces. Engineering beyond the first impression.',url:'https://rajsuhandani.vercel.app',type:'website'},
+ openGraph:{title:'Raj Suhandani | Creative Developer',description:'Some ideas don’t leave me alone. So I build them. Explore nine real digital products.',url:siteOrigin,type:'website',images:[{url:'/social-card.jpg',width:1200,height:630,alt:'Raj Suhandani’s portfolio featuring real previews of Meme Is Mine and ConvoTools'}]},
+ twitter:{card:'summary_large_image',title:'Raj Suhandani | Creative Developer',description:'Some ideas don’t leave me alone. So I build them.',images:['/social-card.jpg']},
  icons:{icon:'/favicon.svg',shortcut:'/favicon.svg',apple:'/favicon.svg'},
  robots:{index:true,follow:true}
 };
