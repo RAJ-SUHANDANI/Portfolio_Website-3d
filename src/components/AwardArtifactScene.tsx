@@ -75,6 +75,7 @@ function KineticInstrument({ mode, pointer }: { mode: number; pointer: PointerSt
 
 export default function AwardArtifactScene({ mode }: { mode: number }) {
   const [supported, setSupported] = useState(false);
+  const [visible, setVisible] = useState(true);
   const pointer = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -84,6 +85,14 @@ export default function AwardArtifactScene({ mode }: { mode: number }) {
       ok = Boolean(canvas.getContext('webgl2') || canvas.getContext('webgl'));
     } catch { ok = false; }
     setSupported(ok);
+  }, []);
+
+  useEffect(() => {
+    const host = document.querySelector('.award-artifact-host');
+    if (!host) return;
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0 });
+    observer.observe(host);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -98,7 +107,7 @@ export default function AwardArtifactScene({ mode }: { mode: number }) {
   if (!supported) return <div className="award-artifact-fallback" data-mode={mode} aria-hidden="true"><span /><span /><span /><b>R/S</b></div>;
 
   return (
-    <Canvas aria-hidden="true" dpr={[1, 1.5]} camera={{ position: [0, .2, 7.9], fov: 42, near: .1, far: 40 }}
+    <Canvas aria-hidden="true" frameloop={visible ? 'always' : 'never'} dpr={[1, 1.5]} camera={{ position: [0, .2, 7.9], fov: 42, near: .1, far: 40 }}
       gl={{ alpha: true, antialias: true, powerPreference: 'high-performance' }}>
       <ambientLight intensity={1.2} color="#f0eedf" />
       <hemisphereLight args={['#f9f5d9', '#303c3e', 2.1]} />
