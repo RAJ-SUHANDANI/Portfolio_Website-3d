@@ -6,6 +6,7 @@ import LivePreview from '@/components/redesign/LivePreview';
 import ProjectArchive from '@/components/redesign/ProjectArchive';
 import {capture} from '@/lib/projectMedia';
 import Signature from '@/components/redesign/Signature';
+import SharePortfolio from '@/components/redesign/SharePortfolio';
 
 const source=[
  {number:'01',name:'Meme Is Mine',slug:'memeismine',type:'Creative tools',tagline:'Memes should be fun to make, too.',description:'I wanted a faster way to turn a familiar reaction into something personal. This is a proper image and video meme studio with a template library, editing tools and a place to keep your work.',live:'https://memeismine.vercel.app/',tone:'meme'},
@@ -110,6 +111,6 @@ export default function EditorialPortfolio(){
     <div className="art-contact-rows"><p>Tell me what you're thinking. I read my messages, and I like meeting people who care about what they make.</p><a className="art-contact-email" href={'mailto:'+profile.email}>Let's talk <ArrowUpRight size={30}/></a></div>
    </section>
   </main>
-  <footer className="art-footer"><Link href="/" className="art-footer-name" aria-label="Back to top"><Signature/></Link><span>Made with code and unreasonable curiosity.</span><div><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={'mailto:'+profile.email}>Email</a><a href="#main">Back to top ↑</a></div><small>© {new Date().getFullYear()} Raj Suhandani</small></footer>
+  <footer className="art-footer"><Link href="/" className="art-footer-name" aria-label="Back to top"><Signature/></Link><span>Made with code and unreasonable curiosity.</span><div><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub</a><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a><a href={'mailto:'+profile.email}>Email</a><a href="#main">Back to top ↑</a></div><SharePortfolio/><small>© {new Date().getFullYear()} Raj Suhandani</small></footer>
  </div>;
 }
